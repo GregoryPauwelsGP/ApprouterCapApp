@@ -1,0 +1,656 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+   <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml">
+      <edmx:Include Namespace="Org.OData.Core.V1" Alias="Core"/>
+   </edmx:Reference>
+   <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Capabilities.V1.xml">
+      <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+   </edmx:Reference>
+   <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Measures.V1.xml">
+      <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+   </edmx:Reference>
+   <edmx:Reference Uri="https://wiki.scn.sap.com/wiki/download/attachments/448470974/Common.xml">
+      <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+   </edmx:Reference>
+   <edmx:DataServices>
+      <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="FCO_MU_SRV">
+         <Annotation Term="com.sap.vocabularies.Common.v1.OriginalProtocolVersion" String="2.0"/>
+         <EntityType Name="UnusualItems">
+            <Key>
+               <PropertyRef Name="RuleNumber"/>
+               <PropertyRef Name="ItemKey"/>
+               <PropertyRef Name="ControllingArea"/>
+               <PropertyRef Name="CODocNo"/>
+               <PropertyRef Name="Currency"/>
+            </Key>
+            <Property Name="UserName" Type="Edm.String" MaxLength="12">
+               <Annotation Term="Common.Label" String="Gebruiker"/>
+            </Property>
+            <Property Name="RuleNumber" Type="Edm.String" Nullable="false" MaxLength="6">
+               <Annotation Term="Common.Label" String="Reserve"/>
+            </Property>
+            <Property Name="ItemKey" Type="Edm.String" Nullable="false" MaxLength="30">
+               <Annotation Term="Common.Label" String="Dertig tekens"/>
+            </Property>
+            <Property Name="ControllingArea" Type="Edm.String" Nullable="false" MaxLength="4">
+               <Annotation Term="Common.Label" String="Niet nader gedef. gebied, evt. voor patch-levels"/>
+            </Property>
+            <Property Name="CODocNo" Type="Edm.String" Nullable="false" MaxLength="10">
+               <Annotation Term="Common.Label" String="Tekstveld van lengte 10"/>
+            </Property>
+            <Property Name="Currency" Type="Edm.String" Nullable="false" MaxLength="5">
+               <Annotation Term="Common.Label" String="R/2-tabel"/>
+            </Property>
+            <Property Name="VersionNo" Type="Edm.String" MaxLength="2">
+               <Annotation Term="Common.Label" String="Componenten van versienummer"/>
+            </Property>
+            <Property Name="TotalValue" Type="Edm.Decimal" Precision="16" Scale="2">
+               <Annotation Term="Measures.ISOCurrency" Path="Currency"/>
+               <Annotation Term="Common.Label" String="Waarde/CO-val."/>
+            </Property>
+            <Property Name="Date" Type="Edm.DateTimeOffset" Precision="0">
+               <Annotation Term="Common.Label" String="Datum"/>
+            </Property>
+            <Property Name="ItemText" Type="Edm.String" MaxLength="50">
+               <Annotation Term="Common.Label" String="Commentaar"/>
+            </Property>
+            <Property Name="TIME" Type="Edm.Decimal" Precision="17" Scale="0">
+               <Annotation Term="Common.Label" String="Toevoegtijdstip"/>
+            </Property>
+            <Property Name="CONFIRMED" Type="Edm.String" MaxLength="1">
+               <Annotation Term="Common.Label" String="Bevestigd"/>
+            </Property>
+            <Property Name="GUID" Type="Edm.String" MaxLength="32">
+               <Annotation Term="Common.Label" String="GUID 16"/>
+            </Property>
+            <Property Name="VenderName" Type="Edm.String" MaxLength="35">
+               <Annotation Term="Common.Label" String="Naam"/>
+            </Property>
+            <Property Name="VenderID" Type="Edm.String" MaxLength="10">
+               <Annotation Term="Common.Label" String="Leverancier"/>
+            </Property>
+            <Property Name="PoNumber" Type="Edm.String" MaxLength="10">
+               <Annotation Term="Common.Label" String="Inkoopdocument"/>
+            </Property>
+            <Property Name="PoItem" Type="Edm.String" MaxLength="5">
+               <Annotation Term="Common.Label" String="Positie"/>
+            </Property>
+            <Property Name="Material" Type="Edm.String" MaxLength="40">
+               <Annotation Term="Common.Label" String="Korte tekst"/>
+            </Property>
+            <Property Name="MaterialId" Type="Edm.String" MaxLength="40">
+               <Annotation Term="Common.Label" String="Artikel"/>
+            </Property>
+            <Property Name="Quantity" Type="Edm.Decimal" Precision="13" Scale="3">
+               <Annotation Term="Common.Label" String="Bestelhoeveelh."/>
+            </Property>
+            <Property Name="OrderPriceUnit" Type="Edm.String" MaxLength="3">
+               <Annotation Term="Common.Label" String="Bestelprijs-HE"/>
+            </Property>
+            <Property Name="Unit" Type="Edm.String" MaxLength="3">
+               <Annotation Term="Common.Label" String="Bestel-HE"/>
+            </Property>
+            <Property Name="Status" Type="Edm.String" MaxLength="1">
+               <Annotation Term="Common.Label" String="Status"/>
+            </Property>
+            <Property Name="Headertext" Type="Edm.String" MaxLength="50">
+               <Annotation Term="Common.Label" String="Commentaar"/>
+            </Property>
+            <Property Name="ControllingAreaTotalValue" Type="Edm.Decimal" Precision="16" Scale="2">
+               <Annotation Term="Measures.ISOCurrency" Path="Currency"/>
+               <Annotation Term="Common.Label" String="Waarde/CO-val."/>
+            </Property>
+            <Property Name="Department" Type="Edm.String" MaxLength="50">
+               <Annotation Term="Common.Label" String="Commentaar"/>
+            </Property>
+            <Property Name="CostCenter" Type="Edm.String" MaxLength="10">
+               <Annotation Term="Common.Label" String="Kostenplaats"/>
+            </Property>
+            <Property Name="CstCtrName" Type="Edm.String" MaxLength="50">
+               <Annotation Term="Common.Label" String="Commentaar"/>
+            </Property>
+            <Property Name="Account" Type="Edm.String" MaxLength="50">
+               <Annotation Term="Common.Label" String="Commentaar"/>
+            </Property>
+            <Property Name="Creator" Type="Edm.String" MaxLength="80">
+               <Annotation Term="Common.Label" String="Volledige naam"/>
+            </Property>
+            <Property Name="CreateDate" Type="Edm.Decimal" Precision="17" Scale="0">
+               <Annotation Term="Common.Label" String="Toevoegtijdstip"/>
+            </Property>
+            <Property Name="SenderCC" Type="Edm.String" MaxLength="10">
+               <Annotation Term="Common.Label" String="Kostenplaats"/>
+            </Property>
+            <Property Name="SenderCCTxt" Type="Edm.String" MaxLength="50">
+               <Annotation Term="Common.Label" String="Commentaar"/>
+            </Property>
+            <Property Name="SenderCCUserResp" Type="Edm.String" MaxLength="12">
+               <Annotation Term="Common.Label" String="Verantw. gebruik."/>
+            </Property>
+            <Property Name="SenderCCFullName" Type="Edm.String" MaxLength="80">
+               <Annotation Term="Common.Label" String="Volledige naam"/>
+            </Property>
+            <Property Name="RuleText" Type="Edm.String" MaxLength="50">
+               <Annotation Term="Common.Label" String="Commentaar"/>
+            </Property>
+            <Property Name="CostElement" Type="Edm.String" MaxLength="10">
+               <Annotation Term="Common.Label" String="Kostensoort"/>
+            </Property>
+            <Property Name="CstElmtName" Type="Edm.String" MaxLength="20">
+               <Annotation Term="Common.Label" String="Naam kostensrt"/>
+            </Property>
+            <Property Name="ChartOfAcct" Type="Edm.String" MaxLength="4">
+               <Annotation Term="Common.Label" String="Rekeningschema"/>
+            </Property>
+            <Property Name="Period" Type="Edm.String" MaxLength="3">
+               <Annotation Term="Common.Label" String="Dummy"/>
+            </Property>
+            <Property Name="TargetCurrency" Type="Edm.String" MaxLength="5">
+               <Annotation Term="Common.Label" String="Naar-valuta"/>
+            </Property>
+            <Property Name="UnitPrice" Type="Edm.Decimal" Precision="16" Scale="2">
+               <Annotation Term="Measures.ISOCurrency" Path="Currency"/>
+               <Annotation Term="Common.Label" String="Waarde/CO-val."/>
+            </Property>
+            <Property Name="Assignee" Type="Edm.String" MaxLength="12">
+               <Annotation Term="Common.Label" String="Gebruiker"/>
+            </Property>
+            <Property Name="ProposedValue" Type="Edm.Decimal" Precision="16" Scale="2">
+               <Annotation Term="Measures.ISOCurrency" Path="Currency"/>
+               <Annotation Term="Common.Label" String="Waarde/CO-val."/>
+            </Property>
+            <Property Name="ProposedCC" Type="Edm.String" MaxLength="10">
+               <Annotation Term="Common.Label" String="Kostenplaats"/>
+            </Property>
+            <Property Name="ProposedKSTAR" Type="Edm.String" MaxLength="10">
+               <Annotation Term="Common.Label" String="Kostensoort"/>
+            </Property>
+            <NavigationProperty Name="Attachment" Type="Collection(FCO_MU_SRV.Attachment)"/>
+            <NavigationProperty Name="Notes" Type="Collection(FCO_MU_SRV.Notes)"/>
+            <NavigationProperty Name="NameList" Type="FCO_MU_SRV.NameList" Nullable="false"/>
+            <NavigationProperty Name="Details" Type="Collection(FCO_MU_SRV.Details)"/>
+         </EntityType>
+         <EntityType Name="Details">
+            <Key>
+               <PropertyRef Name="RuleNumber"/>
+               <PropertyRef Name="ControllingArea"/>
+               <PropertyRef Name="CODocNo"/>
+               <PropertyRef Name="Currency"/>
+            </Key>
+            <Property Name="UserName" Type="Edm.String" MaxLength="12">
+               <Annotation Term="Common.Label" String="Gebruiker"/>
+            </Property>
+            <Property Name="RuleNumber" Type="Edm.String" Nullable="false" MaxLength="6">
+               <Annotation Term="Common.Label" String="Reserve"/>
+            </Property>
+            <Property Name="ControllingArea" Type="Edm.String" Nullable="false" MaxLength="4">
+               <Annotation Term="Common.Label" String="Niet nader gedef. gebied, evt. voor patch-levels"/>
+            </Property>
+            <Property Name="CODocNo" Type="Edm.String" Nullable="false" MaxLength="10">
+               <Annotation Term="Common.Label" String="Tekstveld van lengte 10"/>
+            </Property>
+            <Property Name="OBJECT" Type="Edm.String" MaxLength="50">
+               <Annotation Term="Common.Label" String="Commentaar"/>
+            </Property>
+            <Property Name="VersionNo" Type="Edm.String" MaxLength="2">
+               <Annotation Term="Common.Label" String="Componenten van versienummer"/>
+            </Property>
+            <Property Name="ItemKey" Type="Edm.String" MaxLength="30">
+               <Annotation Term="Common.Label" String="Dertig tekens"/>
+            </Property>
+            <Property Name="Currency" Type="Edm.String" Nullable="false" MaxLength="5">
+               <Annotation Term="Common.Label" String="R/2-tabel"/>
+            </Property>
+            <Property Name="Date" Type="Edm.DateTimeOffset" Precision="0">
+               <Annotation Term="Common.Label" String="Datum"/>
+            </Property>
+            <Property Name="ItemText" Type="Edm.String" MaxLength="50">
+               <Annotation Term="Common.Label" String="Commentaar"/>
+            </Property>
+            <Property Name="TIME" Type="Edm.Decimal" Precision="17" Scale="0">
+               <Annotation Term="Common.Label" String="Toevoegtijdstip"/>
+            </Property>
+            <Property Name="CONFIRMED" Type="Edm.String" MaxLength="1">
+               <Annotation Term="Common.Label" String="Bevestigd"/>
+            </Property>
+            <Property Name="GUID" Type="Edm.String" MaxLength="32">
+               <Annotation Term="Common.Label" String="GUID 16"/>
+            </Property>
+            <Property Name="VenderName" Type="Edm.String" MaxLength="35">
+               <Annotation Term="Common.Label" String="Naam"/>
+            </Property>
+            <Property Name="VenderID" Type="Edm.String" MaxLength="10">
+               <Annotation Term="Common.Label" String="Leverancier"/>
+            </Property>
+            <Property Name="PoNumber" Type="Edm.String" MaxLength="10">
+               <Annotation Term="Common.Label" String="Inkoopdocument"/>
+            </Property>
+            <Property Name="PoItem" Type="Edm.String" MaxLength="5">
+               <Annotation Term="Common.Label" String="Positie"/>
+            </Property>
+            <Property Name="Material" Type="Edm.String" MaxLength="40">
+               <Annotation Term="Common.Label" String="Korte tekst"/>
+            </Property>
+            <Property Name="MaterialId" Type="Edm.String" MaxLength="40">
+               <Annotation Term="Common.Label" String="Artikel"/>
+            </Property>
+            <Property Name="Quantity" Type="Edm.Decimal" Precision="13" Scale="3">
+               <Annotation Term="Common.Label" String="Bestelhoeveelh."/>
+            </Property>
+            <Property Name="OrderPriceUnit" Type="Edm.String" MaxLength="3">
+               <Annotation Term="Common.Label" String="Bestelprijs-HE"/>
+            </Property>
+            <Property Name="Unit" Type="Edm.String" MaxLength="3">
+               <Annotation Term="Common.Label" String="Bestel-HE"/>
+            </Property>
+            <Property Name="Status" Type="Edm.String" MaxLength="1">
+               <Annotation Term="Common.Label" String="Status"/>
+            </Property>
+            <Property Name="Headertext" Type="Edm.String" MaxLength="50">
+               <Annotation Term="Common.Label" String="Commentaar"/>
+            </Property>
+            <Property Name="TotalValue" Type="Edm.Decimal" Precision="16" Scale="2">
+               <Annotation Term="Measures.ISOCurrency" Path="Currency"/>
+               <Annotation Term="Common.Label" String="Waarde/CO-val."/>
+            </Property>
+            <Property Name="Department" Type="Edm.String" MaxLength="50">
+               <Annotation Term="Common.Label" String="Commentaar"/>
+            </Property>
+            <Property Name="CostCenter" Type="Edm.String" MaxLength="50">
+               <Annotation Term="Common.Label" String="Commentaar"/>
+            </Property>
+            <Property Name="Account" Type="Edm.String" MaxLength="50">
+               <Annotation Term="Common.Label" String="Commentaar"/>
+            </Property>
+            <Property Name="Creator" Type="Edm.String" MaxLength="80">
+               <Annotation Term="Common.Label" String="Volledige naam"/>
+            </Property>
+            <Property Name="CreateDate" Type="Edm.Decimal" Precision="17" Scale="0">
+               <Annotation Term="Common.Label" String="Toevoegtijdstip"/>
+            </Property>
+            <Property Name="RuleText" Type="Edm.String" MaxLength="50">
+               <Annotation Term="Common.Label" String="Commentaar"/>
+            </Property>
+            <Property Name="CostElement" Type="Edm.String" MaxLength="10">
+               <Annotation Term="Common.Label" String="Kostensoort"/>
+            </Property>
+            <Property Name="UnitPrice" Type="Edm.Decimal" Precision="16" Scale="2">
+               <Annotation Term="Measures.ISOCurrency" Path="Currency"/>
+               <Annotation Term="Common.Label" String="Waarde/CO-val."/>
+            </Property>
+            <Property Name="ItemValue" Type="Edm.Decimal" Precision="16" Scale="2">
+               <Annotation Term="Measures.ISOCurrency" Path="Currency"/>
+               <Annotation Term="Common.Label" String="Waarde/CO-val."/>
+            </Property>
+         </EntityType>
+         <EntityType Name="Note">
+            <Key>
+               <PropertyRef Name="ItemKey"/>
+            </Key>
+            <Property Name="ItemKey" Type="Edm.String" Nullable="false" MaxLength="30">
+               <Annotation Term="Common.Label" String="Objectkey"/>
+            </Property>
+            <Property Name="Creator" Type="Edm.String" MaxLength="12">
+               <Annotation Term="Common.Label" String="Gebruiker"/>
+            </Property>
+            <Property Name="CrName" Type="Edm.String" MaxLength="80">
+               <Annotation Term="Common.Label" String="Volledige naam"/>
+            </Property>
+            <Property Name="CrDate" Type="Edm.DateTimeOffset" Precision="0">
+               <Annotation Term="Common.Label" String="Datum"/>
+            </Property>
+            <Property Name="CrTime" Type="Edm.TimeOfDay" Precision="0">
+               <Annotation Term="Common.Label" String="Tijd"/>
+            </Property>
+            <Property Name="NoteId" Type="Edm.String" MaxLength="34">
+               <Annotation Term="Common.Label" String="Notitie-ID"/>
+            </Property>
+            <Property Name="Content" Type="Edm.String" MaxLength="255">
+               <Annotation Term="Common.Label" String="Tekstveld lengte 255"/>
+            </Property>
+            <Property Name="Assignee" Type="Edm.String" MaxLength="12">
+               <Annotation Term="Common.Label" String="Gebruiker"/>
+            </Property>
+            <Property Name="AssigneeName" Type="Edm.String" MaxLength="80">
+               <Annotation Term="Common.Label" String="Volledige naam"/>
+            </Property>
+         </EntityType>
+         <EntityType Name="Notes">
+            <Key>
+               <PropertyRef Name="ItemKey"/>
+               <PropertyRef Name="NoteId"/>
+            </Key>
+            <Property Name="ItemKey" Type="Edm.String" Nullable="false" MaxLength="30">
+               <Annotation Term="Common.Label" String="Objectkey"/>
+            </Property>
+            <Property Name="NoteId" Type="Edm.String" Nullable="false" MaxLength="34">
+               <Annotation Term="Common.Label" String="Notitie-ID"/>
+            </Property>
+            <Property Name="Creator" Type="Edm.String" MaxLength="12">
+               <Annotation Term="Common.Label" String="Gebruiker"/>
+            </Property>
+            <Property Name="CrName" Type="Edm.String" MaxLength="80">
+               <Annotation Term="Common.Label" String="Volledige naam"/>
+            </Property>
+            <Property Name="CrDate" Type="Edm.DateTimeOffset" Precision="0">
+               <Annotation Term="Common.Label" String="Datum"/>
+            </Property>
+            <Property Name="CrTime" Type="Edm.TimeOfDay" Precision="0">
+               <Annotation Term="Common.Label" String="Tijd"/>
+            </Property>
+            <Property Name="Content" Type="Edm.String" MaxLength="255">
+               <Annotation Term="Common.Label" String="Tekstveld lengte 255"/>
+            </Property>
+            <Property Name="Assignee" Type="Edm.String" MaxLength="12">
+               <Annotation Term="Common.Label" String="Gebruiker"/>
+            </Property>
+            <Property Name="AssigneeName" Type="Edm.String" MaxLength="80">
+               <Annotation Term="Common.Label" String="Volledige naam"/>
+            </Property>
+         </EntityType>
+         <EntityType Name="Attachment">
+            <Key>
+               <PropertyRef Name="AttachmentID"/>
+            </Key>
+            <Property Name="ItemKey" Type="Edm.String" MaxLength="30">
+               <Annotation Term="Common.Label" String="Objectkey"/>
+            </Property>
+            <Property Name="AttachmentID" Type="Edm.String" Nullable="false" MaxLength="34">
+               <Annotation Term="Common.Label" String="Notitie-ID"/>
+            </Property>
+            <Property Name="FileName" Type="Edm.String" MaxLength="50">
+               <Annotation Term="Common.Label" String="Titel"/>
+            </Property>
+            <Property Name="FileExtension" Type="Edm.String" MaxLength="3">
+               <Annotation Term="Common.Label" String="Toevoeging"/>
+            </Property>
+            <Property Name="FileSize" Type="Edm.String" MaxLength="12">
+               <Annotation Term="Common.Label" String="Documentomvang"/>
+            </Property>
+            <Property Name="CreationDate" Type="Edm.DateTimeOffset" Precision="0">
+               <Annotation Term="Common.Label" String="Aanmaakdatum"/>
+            </Property>
+            <Property Name="CreationTime" Type="Edm.TimeOfDay" Precision="0">
+               <Annotation Term="Common.Label" String="Aanmaaktijd"/>
+            </Property>
+            <Property Name="Creator" Type="Edm.String" MaxLength="12">
+               <Annotation Term="Common.Label" String="Gecreëerd door"/>
+            </Property>
+            <Property Name="CreatorName" Type="Edm.String" MaxLength="80">
+               <Annotation Term="Common.Label" String="Volledige naam"/>
+            </Property>
+            <Property Name="Content" Type="Edm.Binary"/>
+         </EntityType>
+         <EntityType Name="NameList">
+            <Key>
+               <PropertyRef Name="AssignedUser"/>
+            </Key>
+            <Property Name="AssignedUser" Type="Edm.String" Nullable="false" MaxLength="12">
+               <Annotation Term="Common.Label" String="Gebruiker"/>
+            </Property>
+            <Property Name="FirstName" Type="Edm.String" MaxLength="40">
+               <Annotation Term="Common.Label" String="Voornaam"/>
+            </Property>
+            <Property Name="LastName" Type="Edm.String" MaxLength="40">
+               <Annotation Term="Common.Label" String="Achternaam"/>
+            </Property>
+            <Property Name="FullName" Type="Edm.String" MaxLength="80">
+               <Annotation Term="Common.Label" String="Volledige naam"/>
+            </Property>
+            <Property Name="Department" Type="Edm.String" MaxLength="40">
+               <Annotation Term="Common.Label" String="Afdeling"/>
+            </Property>
+            <Property Name="CompanyName" Type="Edm.String" MaxLength="40">
+               <Annotation Term="Common.Label" String="Naam"/>
+            </Property>
+            <Property Name="CompanyNameExt" Type="Edm.String" MaxLength="40">
+               <Annotation Term="Common.Label" String="Naam 2"/>
+            </Property>
+            <Property Name="EMail" Type="Edm.String" MaxLength="241">
+               <Annotation Term="Common.Label" String="E-mailadres"/>
+            </Property>
+            <Property Name="Mobile" Type="Edm.String" MaxLength="30">
+               <Annotation Term="Common.Label" String="Telefoonnummer"/>
+            </Property>
+            <Property Name="Telephone" Type="Edm.String" MaxLength="30">
+               <Annotation Term="Common.Label" String="Telefoonnummer"/>
+            </Property>
+            <Property Name="Street" Type="Edm.String" MaxLength="60">
+               <Annotation Term="Common.Label" String="Straat"/>
+            </Property>
+         </EntityType>
+         <EntityType Name="RuleType">
+            <Key>
+               <PropertyRef Name="RuleType"/>
+               <PropertyRef Name="RuleID"/>
+            </Key>
+            <Property Name="RuleType" Type="Edm.String" Nullable="false" MaxLength="50">
+               <Annotation Term="Common.Label" String="Commentaar"/>
+            </Property>
+            <Property Name="RuleID" Type="Edm.String" Nullable="false" MaxLength="6">
+               <Annotation Term="Common.Label" String="Regelnummer"/>
+            </Property>
+         </EntityType>
+         <EntityType Name="VendorProfile">
+            <Key>
+               <PropertyRef Name="VendorId"/>
+            </Key>
+            <Property Name="VendorId" Type="Edm.String" Nullable="false" MaxLength="10">
+               <Annotation Term="Common.Label" String="Leverancier"/>
+            </Property>
+            <Property Name="CompanyCode" Type="Edm.String" MaxLength="4">
+               <Annotation Term="Common.Label" String="Bedrijfsnummer"/>
+            </Property>
+            <Property Name="Name" Type="Edm.String" MaxLength="35">
+               <Annotation Term="Common.Label" String="Naam"/>
+            </Property>
+            <Property Name="CompanyFunctions" Type="Edm.String" MaxLength="35">
+               <Annotation Term="Common.Label" String="Naam 2"/>
+            </Property>
+            <Property Name="Tel" Type="Edm.String" MaxLength="16">
+               <Annotation Term="Common.Label" String="Telefoon 1"/>
+            </Property>
+            <Property Name="Tel2" Type="Edm.String" MaxLength="16">
+               <Annotation Term="Common.Label" String="Telefoon 2"/>
+            </Property>
+            <Property Name="Internet" Type="Edm.String" MaxLength="130">
+               <Annotation Term="Common.Label" String="Internet-adres"/>
+            </Property>
+            <Property Name="Street" Type="Edm.String" MaxLength="35">
+               <Annotation Term="Common.Label" String="Straat"/>
+            </Property>
+            <Property Name="Email" Type="Edm.String" MaxLength="241">
+               <Annotation Term="Common.Label" String="E-mailadres"/>
+            </Property>
+         </EntityType>
+         <EntityType Name="FilterType">
+            <Key>
+               <PropertyRef Name="Filter"/>
+            </Key>
+            <Property Name="Filter" Type="Edm.String" Nullable="false" MaxLength="20">
+               <Annotation Term="Common.Label" String="char20"/>
+            </Property>
+            <Property Name="Value" Type="Edm.String" MaxLength="20">
+               <Annotation Term="Common.Label" String="char20"/>
+            </Property>
+         </EntityType>
+         <EntityType Name="CurrCode">
+            <Key>
+               <PropertyRef Name="CurrKey"/>
+            </Key>
+            <Property Name="CurrKey" Type="Edm.String" Nullable="false" MaxLength="5">
+               <Annotation Term="Common.Label" String="Valuta"/>
+            </Property>
+            <Property Name="CurrText" Type="Edm.String" MaxLength="15">
+               <Annotation Term="Common.Label" String="Korte tekst"/>
+            </Property>
+         </EntityType>
+         <ComplexType Name="KPI">
+            <Property Name="title" Type="Edm.String">
+               <Annotation Term="Common.Label" String="String"/>
+            </Property>
+            <Property Name="number" Type="Edm.Decimal" Precision="16" Scale="2">
+               <Annotation Term="Common.Label" String="Waarde/CO-val."/>
+            </Property>
+            <Property Name="numberUnit" Type="Edm.String" MaxLength="5">
+               <Annotation Term="Common.Label" String="Valuta"/>
+            </Property>
+            <Property Name="numberFactor" Type="Edm.String" MaxLength="2">
+               <Annotation Term="Common.Label" String="Componenten van versienummer"/>
+            </Property>
+            <Property Name="numberState" Type="Edm.String">
+               <Annotation Term="Common.Label" String="String"/>
+            </Property>
+            <Property Name="info" Type="Edm.String">
+               <Annotation Term="Common.Label" String="String"/>
+            </Property>
+            <Property Name="infoState" Type="Edm.String">
+               <Annotation Term="Common.Label" String="String"/>
+            </Property>
+            <Property Name="numberDigits" Type="Edm.Int32">
+               <Annotation Term="Common.Label" String="INT4"/>
+            </Property>
+         </ComplexType>
+         <ComplexType Name="ReturnCode">
+            <Property Name="ReturnCode" Type="Edm.Int32">
+               <Annotation Term="Common.Label" String="Returncode"/>
+            </Property>
+         </ComplexType>
+         <EntityContainer Name="FCO_MU_SRV_Entities">
+            <EntitySet Name="CurrCodeCollection" EntityType="FCO_MU_SRV.CurrCode">
+               <Annotation Term="Capabilities.SearchRestrictions">
+                  <Record>
+                     <PropertyValue Property="Searchable" Bool="false"/>
+                  </Record>
+               </Annotation>
+            </EntitySet>
+            <EntitySet Name="UnusualItems" EntityType="FCO_MU_SRV.UnusualItems">
+               <NavigationPropertyBinding Target="DetailsCollection" Path="Details"/>
+               <NavigationPropertyBinding Target="Notes" Path="Notes"/>
+               <NavigationPropertyBinding Target="Attachment" Path="Attachment"/>
+               <NavigationPropertyBinding Target="NameListCollection" Path="NameList"/>
+               <Annotation Term="Capabilities.SearchRestrictions">
+                  <Record>
+                     <PropertyValue Property="Searchable" Bool="false"/>
+                  </Record>
+               </Annotation>
+            </EntitySet>
+            <EntitySet Name="DetailsCollection" EntityType="FCO_MU_SRV.Details">
+               <Annotation Term="Capabilities.SearchRestrictions">
+                  <Record>
+                     <PropertyValue Property="Searchable" Bool="false"/>
+                  </Record>
+               </Annotation>
+            </EntitySet>
+            <EntitySet Name="Note" EntityType="FCO_MU_SRV.Note">
+               <Annotation Term="Capabilities.SearchRestrictions">
+                  <Record>
+                     <PropertyValue Property="Searchable" Bool="false"/>
+                  </Record>
+               </Annotation>
+            </EntitySet>
+            <EntitySet Name="Notes" EntityType="FCO_MU_SRV.Notes">
+               <Annotation Term="Capabilities.SearchRestrictions">
+                  <Record>
+                     <PropertyValue Property="Searchable" Bool="false"/>
+                  </Record>
+               </Annotation>
+            </EntitySet>
+            <EntitySet Name="Attachment" EntityType="FCO_MU_SRV.Attachment">
+               <Annotation Term="Capabilities.SearchRestrictions">
+                  <Record>
+                     <PropertyValue Property="Searchable" Bool="false"/>
+                  </Record>
+               </Annotation>
+            </EntitySet>
+            <EntitySet Name="NameListCollection" EntityType="FCO_MU_SRV.NameList">
+               <Annotation Term="Capabilities.SearchRestrictions">
+                  <Record>
+                     <PropertyValue Property="Searchable" Bool="false"/>
+                  </Record>
+               </Annotation>
+            </EntitySet>
+            <EntitySet Name="RuleTypeCollection" EntityType="FCO_MU_SRV.RuleType">
+               <Annotation Term="Capabilities.SearchRestrictions">
+                  <Record>
+                     <PropertyValue Property="Searchable" Bool="false"/>
+                  </Record>
+               </Annotation>
+            </EntitySet>
+            <EntitySet Name="VendorProfileCollection" EntityType="FCO_MU_SRV.VendorProfile">
+               <Annotation Term="Capabilities.SearchRestrictions">
+                  <Record>
+                     <PropertyValue Property="Searchable" Bool="false"/>
+                  </Record>
+               </Annotation>
+            </EntitySet>
+            <EntitySet Name="FilterTypeCollection" EntityType="FCO_MU_SRV.FilterType">
+               <Annotation Term="Capabilities.SearchRestrictions">
+                  <Record>
+                     <PropertyValue Property="Searchable" Bool="false"/>
+                  </Record>
+               </Annotation>
+            </EntitySet>
+            <FunctionImport Name="AddNote" EntitySet="Note" Function="FCO_MU_SRV.AddNote"/>
+            <FunctionImport Name="AssignedName" EntitySet="NameListCollection" Function="FCO_MU_SRV.AssignedName"/>
+            <FunctionImport Name="GetNameCardProfile" EntitySet="NameListCollection" Function="FCO_MU_SRV.GetNameCardProfile"/>
+            <FunctionImport Name="GetRuleTypes" EntitySet="RuleTypeCollection" Function="FCO_MU_SRV.GetRuleTypes" IncludeInServiceDocument="true"/>
+            <FunctionImport Name="GetVendorProfile" EntitySet="VendorProfileCollection" Function="FCO_MU_SRV.GetVendorProfile"/>
+            <FunctionImport Name="GetCount" Function="FCO_MU_SRV.GetCount" IncludeInServiceDocument="true"/>
+            <FunctionImport Name="ConfirmItem" EntitySet="UnusualItems" Function="FCO_MU_SRV.ConfirmItem"/>
+            <FunctionImport Name="DisputeItem" EntitySet="UnusualItems" Function="FCO_MU_SRV.DisputeItem"/>
+            <FunctionImport Name="GetCurrency" EntitySet="CurrCodeCollection" Function="FCO_MU_SRV.GetCurrency" IncludeInServiceDocument="true"/>
+            <FunctionImport Name="RefreshTable" Function="FCO_MU_SRV.RefreshTable" IncludeInServiceDocument="true"/>
+         </EntityContainer>
+         <Function Name="AddNote">
+            <Parameter Nullable="false" Name="ItemKey" Type="Edm.String" MaxLength="30"/>
+            <Parameter Nullable="false" Name="Content" Type="Edm.String" MaxLength="255"/>
+            <Parameter Nullable="false" Name="CODocNo" Type="Edm.String" MaxLength="10"/>
+            <ReturnType Type="Collection(FCO_MU_SRV.Note)" Nullable="false"/>
+         </Function>
+         <Function Name="AssignedName">
+            <Parameter Nullable="false" Name="RuleNumber" Type="Edm.String" MaxLength="6"/>
+            <ReturnType Type="Collection(FCO_MU_SRV.NameList)" Nullable="false"/>
+         </Function>
+         <Function Name="GetNameCardProfile">
+            <Parameter Nullable="false" Name="UName" Type="Edm.String" MaxLength="12"/>
+            <ReturnType Type="Collection(FCO_MU_SRV.NameList)" Nullable="false"/>
+         </Function>
+         <Function Name="GetRuleTypes">
+            <ReturnType Type="Collection(FCO_MU_SRV.RuleType)" Nullable="false"/>
+         </Function>
+         <Function Name="GetVendorProfile">
+            <Parameter Nullable="false" Name="VendorId" Type="Edm.String" MaxLength="10"/>
+            <ReturnType Type="Collection(FCO_MU_SRV.VendorProfile)" Nullable="false"/>
+         </Function>
+         <Function Name="GetCount">
+            <ReturnType Type="FCO_MU_SRV.KPI" Nullable="false"/>
+         </Function>
+         <Function Name="ConfirmItem">
+            <Parameter Nullable="false" Name="RuleNumber" Type="Edm.String" MaxLength="6"/>
+            <Parameter Nullable="false" Name="ItemKey" Type="Edm.String" MaxLength="30"/>
+            <Parameter Nullable="false" Name="OBJECT" Type="Edm.String" MaxLength="34"/>
+            <Parameter Nullable="false" Name="UPDATELIMIT" Type="Edm.String" MaxLength="3"/>
+            <ReturnType Type="Collection(FCO_MU_SRV.UnusualItems)" Nullable="false"/>
+         </Function>
+         <Function Name="DisputeItem">
+            <Parameter Nullable="false" Name="RuleNumber" Type="Edm.String" MaxLength="6"/>
+            <Parameter Nullable="false" Name="ItemKey" Type="Edm.String" MaxLength="30"/>
+            <Parameter Nullable="false" Name="OBJECT" Type="Edm.String" MaxLength="34"/>
+            <Parameter Nullable="false" Name="Subject" Type="Edm.String" MaxLength="50"/>
+            <Parameter Nullable="false" Name="Receiver" Type="Edm.String" MaxLength="12"/>
+            <Parameter Nullable="false" Name="Body" Type="Edm.String"/>
+            <Parameter Nullable="false" Name="ProposedValue" Type="Edm.String"/>
+            <Parameter Nullable="false" Name="ProposedCC" Type="Edm.String" MaxLength="10"/>
+            <Parameter Nullable="false" Name="ProposedKSTAR" Type="Edm.String" MaxLength="10"/>
+            <ReturnType Type="Collection(FCO_MU_SRV.UnusualItems)" Nullable="false"/>
+         </Function>
+         <Function Name="GetCurrency">
+            <ReturnType Type="Collection(FCO_MU_SRV.CurrCode)" Nullable="false"/>
+         </Function>
+         <Function Name="RefreshTable">
+            <ReturnType Type="FCO_MU_SRV.ReturnCode" Nullable="false"/>
+         </Function>
+      </Schema>
+   </edmx:DataServices>
+</edmx:Edmx>

@@ -1,0 +1,3967 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Service for namespace FCO_CORE_SRV",
+        "version": "",
+        "description": "This service is located at [http://localhost/service-root/](https://capservicewithuiapprouter2.cfapps.us10.hana.ondemand.com/sap/opu/odata/sap/fco_core_srv)"
+    },
+    "servers": [
+        {
+            "url": "https://capservicewithuiapprouter2.cfapps.us10.hana.ondemand.com/sap/opu/odata/sap/fco_core_srv"
+        }
+    ],
+    "tags": [
+        {
+            "name": "CctrListCollection"
+        },
+        {
+            "name": "CODocCollection"
+        },
+        {
+            "name": "UnusualItemCollection"
+        },
+        {
+            "name": "NoteCollection"
+        },
+        {
+            "name": "AttachmentCollection"
+        },
+        {
+            "name": "NameListCollection"
+        }
+    ],
+    "paths": {
+        "/CctrListCollection": {
+            "get": {
+                "summary": "Get entities from CctrListCollection",
+                "tags": [
+                    "CctrListCollection"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/top"
+                    },
+                    {
+                        "$ref": "#/components/parameters/skip"
+                    },
+                    {
+                        "name": "$filter",
+                        "in": "query",
+                        "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "$ref": "#/components/parameters/count"
+                    },
+                    {
+                        "name": "$orderby",
+                        "in": "query",
+                        "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+                        "explode": false,
+                        "schema": {
+                            "type": "array",
+                            "uniqueItems": true,
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "CostCenter",
+                                    "CostCenter desc",
+                                    "CostCenterTXT",
+                                    "CostCenterTXT desc"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "$select",
+                        "in": "query",
+                        "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+                        "explode": false,
+                        "schema": {
+                            "type": "array",
+                            "uniqueItems": true,
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "CostCenter",
+                                    "CostCenterTXT"
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retrieved entities",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "Collection of CctrList",
+                                    "type": "object",
+                                    "properties": {
+                                        "@odata.count": {
+                                            "$ref": "#/components/schemas/count"
+                                        },
+                                        "value": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/FCO_CORE_SRV.CctrList"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "4XX": {
+                        "$ref": "#/components/responses/error"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Add new entity to CctrListCollection",
+                "tags": [
+                    "CctrListCollection"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "description": "New entity",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/FCO_CORE_SRV.CctrList-create"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FCO_CORE_SRV.CctrList"
+                                }
+                            }
+                        }
+                    },
+                    "4XX": {
+                        "$ref": "#/components/responses/error"
+                    }
+                }
+            }
+        },
+        "/CctrListCollection('{CostCenter}')": {
+            "parameters": [
+                {
+                    "name": "CostCenter",
+                    "in": "path",
+                    "required": true,
+                    "description": "Kostenplaats",
+                    "schema": {
+                        "type": "string",
+                        "maxLength": 10
+                    }
+                }
+            ],
+            "get": {
+                "summary": "Get entity from CctrListCollection by key",
+                "tags": [
+                    "CctrListCollection"
+                ],
+                "parameters": [
+                    {
+                        "name": "$select",
+                        "in": "query",
+                        "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+                        "explode": false,
+                        "schema": {
+                            "type": "array",
+                            "uniqueItems": true,
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "CostCenter",
+                                    "CostCenterTXT"
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retrieved entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FCO_CORE_SRV.CctrList"
+                                }
+                            }
+                        }
+                    },
+                    "4XX": {
+                        "$ref": "#/components/responses/error"
+                    }
+                }
+            },
+            "patch": {
+                "summary": "Update entity in CctrListCollection",
+                "tags": [
+                    "CctrListCollection"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "description": "New property values",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/FCO_CORE_SRV.CctrList-update"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "204": {
+                        "description": "Success"
+                    },
+                    "4XX": {
+                        "$ref": "#/components/responses/error"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete entity from CctrListCollection",
+                "tags": [
+                    "CctrListCollection"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Success"
+                    },
+                    "4XX": {
+                        "$ref": "#/components/responses/error"
+                    }
+                }
+            }
+        },
+        "/CODocCollection": {
+            "get": {
+                "summary": "Get entities from CODocCollection",
+                "tags": [
+                    "CODocCollection"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/top"
+                    },
+                    {
+                        "$ref": "#/components/parameters/skip"
+                    },
+                    {
+                        "name": "$filter",
+                        "in": "query",
+                        "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "$ref": "#/components/parameters/count"
+                    },
+                    {
+                        "name": "$orderby",
+                        "in": "query",
+                        "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+                        "explode": false,
+                        "schema": {
+                            "type": "array",
+                            "uniqueItems": true,
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "Currency",
+                                    "Currency desc",
+                                    "DocNumber",
+                                    "DocNumber desc",
+                                    "ControllingArea",
+                                    "ControllingArea desc",
+                                    "TotalValue",
+                                    "TotalValue desc",
+                                    "ItemCount",
+                                    "ItemCount desc",
+                                    "PostingDate",
+                                    "PostingDate desc",
+                                    "AccountTXT",
+                                    "AccountTXT desc",
+                                    "CreateBy",
+                                    "CreateBy desc",
+                                    "CreateByTXT",
+                                    "CreateByTXT desc"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "$select",
+                        "in": "query",
+                        "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+                        "explode": false,
+                        "schema": {
+                            "type": "array",
+                            "uniqueItems": true,
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "Currency",
+                                    "DocNumber",
+                                    "ControllingArea",
+                                    "TotalValue",
+                                    "ItemCount",
+                                    "PostingDate",
+                                    "AccountTXT",
+                                    "CreateBy",
+                                    "CreateByTXT"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "$expand",
+                        "in": "query",
+                        "description": "Expand related entities, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+                        "explode": false,
+                        "schema": {
+                            "type": "array",
+                            "uniqueItems": true,
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "*",
+                                    "Attachment",
+                                    "Note",
+                                    "UnusualItems"
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retrieved entities",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "Collection of CODoc",
+                                    "type": "object",
+                                    "properties": {
+                                        "@odata.count": {
+                                            "$ref": "#/components/schemas/count"
+                                        },
+                                        "value": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/FCO_CORE_SRV.CODoc"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "4XX": {
+                        "$ref": "#/components/responses/error"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Add new entity to CODocCollection",
+                "tags": [
+                    "CODocCollection"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "description": "New entity",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/FCO_CORE_SRV.CODoc-create"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FCO_CORE_SRV.CODoc"
+                                }
+                            }
+                        }
+                    },
+                    "4XX": {
+                        "$ref": "#/components/responses/error"
+                    }
+                }
+            }
+        },
+        "/CODocCollection(Currency='{Currency}',DocNumber='{DocNumber}',ControllingArea='{ControllingArea}')": {
+            "parameters": [
+                {
+                    "name": "Currency",
+                    "in": "path",
+                    "required": true,
+                    "description": "Valuta",
+                    "schema": {
+                        "type": "string",
+                        "maxLength": 5
+                    }
+                },
+                {
+                    "name": "DocNumber",
+                    "in": "path",
+                    "required": true,
+                    "description": "Documentnummer",
+                    "schema": {
+                        "type": "string",
+                        "maxLength": 10
+                    }
+                },
+                {
+                    "name": "ControllingArea",
+                    "in": "path",
+                    "required": true,
+                    "description": "CO-gebied",
+                    "schema": {
+                        "type": "string",
+                        "maxLength": 4
+                    }
+                }
+            ],
+            "get": {
+                "summary": "Get entity from CODocCollection by key",
+                "tags": [
+                    "CODocCollection"
+                ],
+                "parameters": [
+                    {
+                        "name": "$select",
+                        "in": "query",
+                        "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+                        "explode": false,
+                        "schema": {
+                            "type": "array",
+                            "uniqueItems": true,
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "Currency",
+                                    "DocNumber",
+                                    "ControllingArea",
+                                    "TotalValue",
+                                    "ItemCount",
+                                    "PostingDate",
+                                    "AccountTXT",
+                                    "CreateBy",
+                                    "CreateByTXT"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "$expand",
+                        "in": "query",
+                        "description": "Expand related entities, see [Expand](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionexpand)",
+                        "explode": false,
+                        "schema": {
+                            "type": "array",
+                            "uniqueItems": true,
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "*",
+                                    "Attachment",
+                                    "Note",
+                                    "UnusualItems"
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retrieved entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FCO_CORE_SRV.CODoc"
+                                }
+                            }
+                        }
+                    },
+                    "4XX": {
+                        "$ref": "#/components/responses/error"
+                    }
+                }
+            },
+            "patch": {
+                "summary": "Update entity in CODocCollection",
+                "tags": [
+                    "CODocCollection"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "description": "New property values",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/FCO_CORE_SRV.CODoc-update"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "204": {
+                        "description": "Success"
+                    },
+                    "4XX": {
+                        "$ref": "#/components/responses/error"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete entity from CODocCollection",
+                "tags": [
+                    "CODocCollection"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Success"
+                    },
+                    "4XX": {
+                        "$ref": "#/components/responses/error"
+                    }
+                }
+            }
+        },
+        "/CODocCollection(Currency='{Currency}',DocNumber='{DocNumber}',ControllingArea='{ControllingArea}')/Attachment": {
+            "parameters": [
+                {
+                    "name": "Currency",
+                    "in": "path",
+                    "required": true,
+                    "description": "Valuta",
+                    "schema": {
+                        "type": "string",
+                        "maxLength": 5
+                    }
+                },
+                {
+                    "name": "DocNumber",
+                    "in": "path",
+                    "required": true,
+                    "description": "Documentnummer",
+                    "schema": {
+                        "type": "string",
+                        "maxLength": 10
+                    }
+                },
+                {
+                    "name": "ControllingArea",
+                    "in": "path",
+                    "required": true,
+                    "description": "CO-gebied",
+                    "schema": {
+                        "type": "string",
+                        "maxLength": 4
+                    }
+                }
+            ],
+            "get": {
+                "summary": "Get entities from related Attachment",
+                "tags": [
+                    "CODocCollection",
+                    "AttachmentCollection"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/top"
+                    },
+                    {
+                        "$ref": "#/components/parameters/skip"
+                    },
+                    {
+                        "name": "$filter",
+                        "in": "query",
+                        "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "$ref": "#/components/parameters/count"
+                    },
+                    {
+                        "name": "$orderby",
+                        "in": "query",
+                        "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+                        "explode": false,
+                        "schema": {
+                            "type": "array",
+                            "uniqueItems": true,
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "ItemKey",
+                                    "ItemKey desc",
+                                    "AttachmentID",
+                                    "AttachmentID desc",
+                                    "FileName",
+                                    "FileName desc",
+                                    "FileExtension",
+                                    "FileExtension desc",
+                                    "FileSize",
+                                    "FileSize desc",
+                                    "CreationDate",
+                                    "CreationDate desc",
+                                    "CreationTime",
+                                    "CreationTime desc",
+                                    "Creator",
+                                    "Creator desc",
+                                    "CreatorName",
+                                    "CreatorName desc",
+                                    "Content",
+                                    "Content desc"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "$select",
+                        "in": "query",
+                        "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+                        "explode": false,
+                        "schema": {
+                            "type": "array",
+                            "uniqueItems": true,
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "ItemKey",
+                                    "AttachmentID",
+                                    "FileName",
+                                    "FileExtension",
+                                    "FileSize",
+                                    "CreationDate",
+                                    "CreationTime",
+                                    "Creator",
+                                    "CreatorName",
+                                    "Content"
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retrieved entities",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "Collection of Attachment",
+                                    "type": "object",
+                                    "properties": {
+                                        "@odata.count": {
+                                            "$ref": "#/components/schemas/count"
+                                        },
+                                        "value": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/FCO_CORE_SRV.Attachment"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "4XX": {
+                        "$ref": "#/components/responses/error"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Add new entity to related Attachment",
+                "tags": [
+                    "CODocCollection",
+                    "AttachmentCollection"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "description": "New entity",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/FCO_CORE_SRV.Attachment-create"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FCO_CORE_SRV.Attachment"
+                                }
+                            }
+                        }
+                    },
+                    "4XX": {
+                        "$ref": "#/components/responses/error"
+                    }
+                }
+            }
+        },
+        "/CODocCollection(Currency='{Currency}',DocNumber='{DocNumber}',ControllingArea='{ControllingArea}')/Note": {
+            "parameters": [
+                {
+                    "name": "Currency",
+                    "in": "path",
+                    "required": true,
+                    "description": "Valuta",
+                    "schema": {
+                        "type": "string",
+                        "maxLength": 5
+                    }
+                },
+                {
+                    "name": "DocNumber",
+                    "in": "path",
+                    "required": true,
+                    "description": "Documentnummer",
+                    "schema": {
+                        "type": "string",
+                        "maxLength": 10
+                    }
+                },
+                {
+                    "name": "ControllingArea",
+                    "in": "path",
+                    "required": true,
+                    "description": "CO-gebied",
+                    "schema": {
+                        "type": "string",
+                        "maxLength": 4
+                    }
+                }
+            ],
+            "get": {
+                "summary": "Get entities from related Note",
+                "tags": [
+                    "CODocCollection",
+                    "NoteCollection"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/top"
+                    },
+                    {
+                        "$ref": "#/components/parameters/skip"
+                    },
+                    {
+                        "name": "$filter",
+                        "in": "query",
+                        "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "$ref": "#/components/parameters/count"
+                    },
+                    {
+                        "name": "$orderby",
+                        "in": "query",
+                        "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+                        "explode": false,
+                        "schema": {
+                            "type": "array",
+                            "uniqueItems": true,
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "ItemKey",
+                                    "ItemKey desc",
+                                    "NoteId",
+                                    "NoteId desc",
+                                    "Creator",
+                                    "Creator desc",
+                                    "CrName",
+                                    "CrName desc",
+                                    "CrDate",
+                                    "CrDate desc",
+                                    "CrTime",
+                                    "CrTime desc",
+                                    "Content",
+                                    "Content desc",
+                                    "Assignee",
+                                    "Assignee desc",
+                                    "AssigneeName",
+                                    "AssigneeName desc"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "$select",
+                        "in": "query",
+                        "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+                        "explode": false,
+                        "schema": {
+                            "type": "array",
+                            "uniqueItems": true,
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "ItemKey",
+                                    "NoteId",
+                                    "Creator",
+                                    "CrName",
+                                    "CrDate",
+                                    "CrTime",
+                                    "Content",
+                                    "Assignee",
+                                    "AssigneeName"
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retrieved entities",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "Collection of Note",
+                                    "type": "object",
+                                    "properties": {
+                                        "@odata.count": {
+                                            "$ref": "#/components/schemas/count"
+                                        },
+                                        "value": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/FCO_CORE_SRV.Note"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "4XX": {
+                        "$ref": "#/components/responses/error"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Add new entity to related Note",
+                "tags": [
+                    "CODocCollection",
+                    "NoteCollection"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "description": "New entity",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/FCO_CORE_SRV.Note-create"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FCO_CORE_SRV.Note"
+                                }
+                            }
+                        }
+                    },
+                    "4XX": {
+                        "$ref": "#/components/responses/error"
+                    }
+                }
+            }
+        },
+        "/CODocCollection(Currency='{Currency}',DocNumber='{DocNumber}',ControllingArea='{ControllingArea}')/UnusualItems": {
+            "parameters": [
+                {
+                    "name": "Currency",
+                    "in": "path",
+                    "required": true,
+                    "description": "Valuta",
+                    "schema": {
+                        "type": "string",
+                        "maxLength": 5
+                    }
+                },
+                {
+                    "name": "DocNumber",
+                    "in": "path",
+                    "required": true,
+                    "description": "Documentnummer",
+                    "schema": {
+                        "type": "string",
+                        "maxLength": 10
+                    }
+                },
+                {
+                    "name": "ControllingArea",
+                    "in": "path",
+                    "required": true,
+                    "description": "CO-gebied",
+                    "schema": {
+                        "type": "string",
+                        "maxLength": 4
+                    }
+                }
+            ],
+            "get": {
+                "summary": "Get entities from related UnusualItems",
+                "tags": [
+                    "CODocCollection",
+                    "UnusualItemCollection"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/top"
+                    },
+                    {
+                        "$ref": "#/components/parameters/skip"
+                    },
+                    {
+                        "name": "$filter",
+                        "in": "query",
+                        "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "$ref": "#/components/parameters/count"
+                    },
+                    {
+                        "name": "$orderby",
+                        "in": "query",
+                        "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+                        "explode": false,
+                        "schema": {
+                            "type": "array",
+                            "uniqueItems": true,
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "Currency",
+                                    "Currency desc",
+                                    "ItemKey",
+                                    "ItemKey desc",
+                                    "ItemText",
+                                    "ItemText desc",
+                                    "ItemValue",
+                                    "ItemValue desc",
+                                    "CostElement",
+                                    "CostElement desc",
+                                    "CostElementTXT",
+                                    "CostElementTXT desc",
+                                    "CostCenter",
+                                    "CostCenter desc",
+                                    "CostCenterTXT",
+                                    "CostCenterTXT desc",
+                                    "LastChangedBy",
+                                    "LastChangedBy desc",
+                                    "ProposedCostCenter",
+                                    "ProposedCostCenter desc",
+                                    "ProposedValue",
+                                    "ProposedValue desc",
+                                    "ProposedCostElement",
+                                    "ProposedCostElement desc"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "$select",
+                        "in": "query",
+                        "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+                        "explode": false,
+                        "schema": {
+                            "type": "array",
+                            "uniqueItems": true,
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "Currency",
+                                    "ItemKey",
+                                    "ItemText",
+                                    "ItemValue",
+                                    "CostElement",
+                                    "CostElementTXT",
+                                    "CostCenter",
+                                    "CostCenterTXT",
+                                    "LastChangedBy",
+                                    "ProposedCostCenter",
+                                    "ProposedValue",
+                                    "ProposedCostElement"
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retrieved entities",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "Collection of UnusualItem",
+                                    "type": "object",
+                                    "properties": {
+                                        "@odata.count": {
+                                            "$ref": "#/components/schemas/count"
+                                        },
+                                        "value": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/FCO_CORE_SRV.UnusualItem"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "4XX": {
+                        "$ref": "#/components/responses/error"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Add new entity to related UnusualItems",
+                "tags": [
+                    "CODocCollection",
+                    "UnusualItemCollection"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "description": "New entity",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/FCO_CORE_SRV.UnusualItem-create"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FCO_CORE_SRV.UnusualItem"
+                                }
+                            }
+                        }
+                    },
+                    "4XX": {
+                        "$ref": "#/components/responses/error"
+                    }
+                }
+            }
+        },
+        "/UnusualItemCollection": {
+            "get": {
+                "summary": "Get entities from UnusualItemCollection",
+                "tags": [
+                    "UnusualItemCollection"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/top"
+                    },
+                    {
+                        "$ref": "#/components/parameters/skip"
+                    },
+                    {
+                        "name": "$filter",
+                        "in": "query",
+                        "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "$ref": "#/components/parameters/count"
+                    },
+                    {
+                        "name": "$orderby",
+                        "in": "query",
+                        "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+                        "explode": false,
+                        "schema": {
+                            "type": "array",
+                            "uniqueItems": true,
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "Currency",
+                                    "Currency desc",
+                                    "ItemKey",
+                                    "ItemKey desc",
+                                    "ItemText",
+                                    "ItemText desc",
+                                    "ItemValue",
+                                    "ItemValue desc",
+                                    "CostElement",
+                                    "CostElement desc",
+                                    "CostElementTXT",
+                                    "CostElementTXT desc",
+                                    "CostCenter",
+                                    "CostCenter desc",
+                                    "CostCenterTXT",
+                                    "CostCenterTXT desc",
+                                    "LastChangedBy",
+                                    "LastChangedBy desc",
+                                    "ProposedCostCenter",
+                                    "ProposedCostCenter desc",
+                                    "ProposedValue",
+                                    "ProposedValue desc",
+                                    "ProposedCostElement",
+                                    "ProposedCostElement desc"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "$select",
+                        "in": "query",
+                        "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+                        "explode": false,
+                        "schema": {
+                            "type": "array",
+                            "uniqueItems": true,
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "Currency",
+                                    "ItemKey",
+                                    "ItemText",
+                                    "ItemValue",
+                                    "CostElement",
+                                    "CostElementTXT",
+                                    "CostCenter",
+                                    "CostCenterTXT",
+                                    "LastChangedBy",
+                                    "ProposedCostCenter",
+                                    "ProposedValue",
+                                    "ProposedCostElement"
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retrieved entities",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "Collection of UnusualItem",
+                                    "type": "object",
+                                    "properties": {
+                                        "@odata.count": {
+                                            "$ref": "#/components/schemas/count"
+                                        },
+                                        "value": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/FCO_CORE_SRV.UnusualItem"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "4XX": {
+                        "$ref": "#/components/responses/error"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Add new entity to UnusualItemCollection",
+                "tags": [
+                    "UnusualItemCollection"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "description": "New entity",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/FCO_CORE_SRV.UnusualItem-create"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FCO_CORE_SRV.UnusualItem"
+                                }
+                            }
+                        }
+                    },
+                    "4XX": {
+                        "$ref": "#/components/responses/error"
+                    }
+                }
+            }
+        },
+        "/UnusualItemCollection(Currency='{Currency}',ItemKey='{ItemKey}')": {
+            "parameters": [
+                {
+                    "name": "Currency",
+                    "in": "path",
+                    "required": true,
+                    "description": "Valuta",
+                    "schema": {
+                        "type": "string",
+                        "maxLength": 5
+                    }
+                },
+                {
+                    "name": "ItemKey",
+                    "in": "path",
+                    "required": true,
+                    "description": "Objectkey",
+                    "schema": {
+                        "type": "string",
+                        "maxLength": 30
+                    }
+                }
+            ],
+            "get": {
+                "summary": "Get entity from UnusualItemCollection by key",
+                "tags": [
+                    "UnusualItemCollection"
+                ],
+                "parameters": [
+                    {
+                        "name": "$select",
+                        "in": "query",
+                        "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+                        "explode": false,
+                        "schema": {
+                            "type": "array",
+                            "uniqueItems": true,
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "Currency",
+                                    "ItemKey",
+                                    "ItemText",
+                                    "ItemValue",
+                                    "CostElement",
+                                    "CostElementTXT",
+                                    "CostCenter",
+                                    "CostCenterTXT",
+                                    "LastChangedBy",
+                                    "ProposedCostCenter",
+                                    "ProposedValue",
+                                    "ProposedCostElement"
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retrieved entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FCO_CORE_SRV.UnusualItem"
+                                }
+                            }
+                        }
+                    },
+                    "4XX": {
+                        "$ref": "#/components/responses/error"
+                    }
+                }
+            },
+            "patch": {
+                "summary": "Update entity in UnusualItemCollection",
+                "tags": [
+                    "UnusualItemCollection"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "description": "New property values",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/FCO_CORE_SRV.UnusualItem-update"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "204": {
+                        "description": "Success"
+                    },
+                    "4XX": {
+                        "$ref": "#/components/responses/error"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete entity from UnusualItemCollection",
+                "tags": [
+                    "UnusualItemCollection"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Success"
+                    },
+                    "4XX": {
+                        "$ref": "#/components/responses/error"
+                    }
+                }
+            }
+        },
+        "/NoteCollection": {
+            "get": {
+                "summary": "Get entities from NoteCollection",
+                "tags": [
+                    "NoteCollection"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/top"
+                    },
+                    {
+                        "$ref": "#/components/parameters/skip"
+                    },
+                    {
+                        "name": "$filter",
+                        "in": "query",
+                        "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "$ref": "#/components/parameters/count"
+                    },
+                    {
+                        "name": "$orderby",
+                        "in": "query",
+                        "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+                        "explode": false,
+                        "schema": {
+                            "type": "array",
+                            "uniqueItems": true,
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "ItemKey",
+                                    "ItemKey desc",
+                                    "NoteId",
+                                    "NoteId desc",
+                                    "Creator",
+                                    "Creator desc",
+                                    "CrName",
+                                    "CrName desc",
+                                    "CrDate",
+                                    "CrDate desc",
+                                    "CrTime",
+                                    "CrTime desc",
+                                    "Content",
+                                    "Content desc",
+                                    "Assignee",
+                                    "Assignee desc",
+                                    "AssigneeName",
+                                    "AssigneeName desc"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "$select",
+                        "in": "query",
+                        "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+                        "explode": false,
+                        "schema": {
+                            "type": "array",
+                            "uniqueItems": true,
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "ItemKey",
+                                    "NoteId",
+                                    "Creator",
+                                    "CrName",
+                                    "CrDate",
+                                    "CrTime",
+                                    "Content",
+                                    "Assignee",
+                                    "AssigneeName"
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retrieved entities",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "Collection of Note",
+                                    "type": "object",
+                                    "properties": {
+                                        "@odata.count": {
+                                            "$ref": "#/components/schemas/count"
+                                        },
+                                        "value": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/FCO_CORE_SRV.Note"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "4XX": {
+                        "$ref": "#/components/responses/error"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Add new entity to NoteCollection",
+                "tags": [
+                    "NoteCollection"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "description": "New entity",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/FCO_CORE_SRV.Note-create"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FCO_CORE_SRV.Note"
+                                }
+                            }
+                        }
+                    },
+                    "4XX": {
+                        "$ref": "#/components/responses/error"
+                    }
+                }
+            }
+        },
+        "/NoteCollection(ItemKey='{ItemKey}',NoteId='{NoteId}')": {
+            "parameters": [
+                {
+                    "name": "ItemKey",
+                    "in": "path",
+                    "required": true,
+                    "description": "Positiecode",
+                    "schema": {
+                        "type": "string",
+                        "maxLength": 30
+                    }
+                },
+                {
+                    "name": "NoteId",
+                    "in": "path",
+                    "required": true,
+                    "description": "Notitie-ID",
+                    "schema": {
+                        "type": "string",
+                        "maxLength": 34
+                    }
+                }
+            ],
+            "get": {
+                "summary": "Get entity from NoteCollection by key",
+                "tags": [
+                    "NoteCollection"
+                ],
+                "parameters": [
+                    {
+                        "name": "$select",
+                        "in": "query",
+                        "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+                        "explode": false,
+                        "schema": {
+                            "type": "array",
+                            "uniqueItems": true,
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "ItemKey",
+                                    "NoteId",
+                                    "Creator",
+                                    "CrName",
+                                    "CrDate",
+                                    "CrTime",
+                                    "Content",
+                                    "Assignee",
+                                    "AssigneeName"
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retrieved entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FCO_CORE_SRV.Note"
+                                }
+                            }
+                        }
+                    },
+                    "4XX": {
+                        "$ref": "#/components/responses/error"
+                    }
+                }
+            },
+            "patch": {
+                "summary": "Update entity in NoteCollection",
+                "tags": [
+                    "NoteCollection"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "description": "New property values",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/FCO_CORE_SRV.Note-update"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "204": {
+                        "description": "Success"
+                    },
+                    "4XX": {
+                        "$ref": "#/components/responses/error"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete entity from NoteCollection",
+                "tags": [
+                    "NoteCollection"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Success"
+                    },
+                    "4XX": {
+                        "$ref": "#/components/responses/error"
+                    }
+                }
+            }
+        },
+        "/AttachmentCollection": {
+            "get": {
+                "summary": "Get entities from AttachmentCollection",
+                "tags": [
+                    "AttachmentCollection"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/top"
+                    },
+                    {
+                        "$ref": "#/components/parameters/skip"
+                    },
+                    {
+                        "name": "$filter",
+                        "in": "query",
+                        "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "$ref": "#/components/parameters/count"
+                    },
+                    {
+                        "name": "$orderby",
+                        "in": "query",
+                        "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+                        "explode": false,
+                        "schema": {
+                            "type": "array",
+                            "uniqueItems": true,
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "ItemKey",
+                                    "ItemKey desc",
+                                    "AttachmentID",
+                                    "AttachmentID desc",
+                                    "FileName",
+                                    "FileName desc",
+                                    "FileExtension",
+                                    "FileExtension desc",
+                                    "FileSize",
+                                    "FileSize desc",
+                                    "CreationDate",
+                                    "CreationDate desc",
+                                    "CreationTime",
+                                    "CreationTime desc",
+                                    "Creator",
+                                    "Creator desc",
+                                    "CreatorName",
+                                    "CreatorName desc",
+                                    "Content",
+                                    "Content desc"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "$select",
+                        "in": "query",
+                        "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+                        "explode": false,
+                        "schema": {
+                            "type": "array",
+                            "uniqueItems": true,
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "ItemKey",
+                                    "AttachmentID",
+                                    "FileName",
+                                    "FileExtension",
+                                    "FileSize",
+                                    "CreationDate",
+                                    "CreationTime",
+                                    "Creator",
+                                    "CreatorName",
+                                    "Content"
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retrieved entities",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "Collection of Attachment",
+                                    "type": "object",
+                                    "properties": {
+                                        "@odata.count": {
+                                            "$ref": "#/components/schemas/count"
+                                        },
+                                        "value": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/FCO_CORE_SRV.Attachment"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "4XX": {
+                        "$ref": "#/components/responses/error"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Add new entity to AttachmentCollection",
+                "tags": [
+                    "AttachmentCollection"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "description": "New entity",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/FCO_CORE_SRV.Attachment-create"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FCO_CORE_SRV.Attachment"
+                                }
+                            }
+                        }
+                    },
+                    "4XX": {
+                        "$ref": "#/components/responses/error"
+                    }
+                }
+            }
+        },
+        "/AttachmentCollection('{AttachmentID}')": {
+            "parameters": [
+                {
+                    "name": "AttachmentID",
+                    "in": "path",
+                    "required": true,
+                    "description": "Notitie-ID",
+                    "schema": {
+                        "type": "string",
+                        "maxLength": 34
+                    }
+                }
+            ],
+            "get": {
+                "summary": "Get entity from AttachmentCollection by key",
+                "tags": [
+                    "AttachmentCollection"
+                ],
+                "parameters": [
+                    {
+                        "name": "$select",
+                        "in": "query",
+                        "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+                        "explode": false,
+                        "schema": {
+                            "type": "array",
+                            "uniqueItems": true,
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "ItemKey",
+                                    "AttachmentID",
+                                    "FileName",
+                                    "FileExtension",
+                                    "FileSize",
+                                    "CreationDate",
+                                    "CreationTime",
+                                    "Creator",
+                                    "CreatorName",
+                                    "Content"
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retrieved entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FCO_CORE_SRV.Attachment"
+                                }
+                            }
+                        }
+                    },
+                    "4XX": {
+                        "$ref": "#/components/responses/error"
+                    }
+                }
+            },
+            "patch": {
+                "summary": "Update entity in AttachmentCollection",
+                "tags": [
+                    "AttachmentCollection"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "description": "New property values",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/FCO_CORE_SRV.Attachment-update"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "204": {
+                        "description": "Success"
+                    },
+                    "4XX": {
+                        "$ref": "#/components/responses/error"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete entity from AttachmentCollection",
+                "tags": [
+                    "AttachmentCollection"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Success"
+                    },
+                    "4XX": {
+                        "$ref": "#/components/responses/error"
+                    }
+                }
+            }
+        },
+        "/NameListCollection": {
+            "get": {
+                "summary": "Get entities from NameListCollection",
+                "tags": [
+                    "NameListCollection"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/top"
+                    },
+                    {
+                        "$ref": "#/components/parameters/skip"
+                    },
+                    {
+                        "name": "$filter",
+                        "in": "query",
+                        "description": "Filter items by property values, see [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "$ref": "#/components/parameters/count"
+                    },
+                    {
+                        "name": "$orderby",
+                        "in": "query",
+                        "description": "Order items by property values, see [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)",
+                        "explode": false,
+                        "schema": {
+                            "type": "array",
+                            "uniqueItems": true,
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "AssignedUser",
+                                    "AssignedUser desc",
+                                    "FirstName",
+                                    "FirstName desc",
+                                    "LastName",
+                                    "LastName desc",
+                                    "FullName",
+                                    "FullName desc",
+                                    "Department",
+                                    "Department desc",
+                                    "CompanyName",
+                                    "CompanyName desc",
+                                    "CompanyNameExt",
+                                    "CompanyNameExt desc",
+                                    "EMail",
+                                    "EMail desc",
+                                    "Mobile",
+                                    "Mobile desc",
+                                    "Telephone",
+                                    "Telephone desc",
+                                    "Street",
+                                    "Street desc"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "$select",
+                        "in": "query",
+                        "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+                        "explode": false,
+                        "schema": {
+                            "type": "array",
+                            "uniqueItems": true,
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "AssignedUser",
+                                    "FirstName",
+                                    "LastName",
+                                    "FullName",
+                                    "Department",
+                                    "CompanyName",
+                                    "CompanyNameExt",
+                                    "EMail",
+                                    "Mobile",
+                                    "Telephone",
+                                    "Street"
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retrieved entities",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "Collection of NameList",
+                                    "type": "object",
+                                    "properties": {
+                                        "@odata.count": {
+                                            "$ref": "#/components/schemas/count"
+                                        },
+                                        "value": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/FCO_CORE_SRV.NameList"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "4XX": {
+                        "$ref": "#/components/responses/error"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Add new entity to NameListCollection",
+                "tags": [
+                    "NameListCollection"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "description": "New entity",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/FCO_CORE_SRV.NameList-create"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FCO_CORE_SRV.NameList"
+                                }
+                            }
+                        }
+                    },
+                    "4XX": {
+                        "$ref": "#/components/responses/error"
+                    }
+                }
+            }
+        },
+        "/NameListCollection('{AssignedUser}')": {
+            "parameters": [
+                {
+                    "name": "AssignedUser",
+                    "in": "path",
+                    "required": true,
+                    "description": "Gebruiker",
+                    "schema": {
+                        "type": "string",
+                        "maxLength": 12
+                    }
+                }
+            ],
+            "get": {
+                "summary": "Get entity from NameListCollection by key",
+                "tags": [
+                    "NameListCollection"
+                ],
+                "parameters": [
+                    {
+                        "name": "$select",
+                        "in": "query",
+                        "description": "Select properties to be returned, see [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)",
+                        "explode": false,
+                        "schema": {
+                            "type": "array",
+                            "uniqueItems": true,
+                            "items": {
+                                "type": "string",
+                                "enum": [
+                                    "AssignedUser",
+                                    "FirstName",
+                                    "LastName",
+                                    "FullName",
+                                    "Department",
+                                    "CompanyName",
+                                    "CompanyNameExt",
+                                    "EMail",
+                                    "Mobile",
+                                    "Telephone",
+                                    "Street"
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retrieved entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FCO_CORE_SRV.NameList"
+                                }
+                            }
+                        }
+                    },
+                    "4XX": {
+                        "$ref": "#/components/responses/error"
+                    }
+                }
+            },
+            "patch": {
+                "summary": "Update entity in NameListCollection",
+                "tags": [
+                    "NameListCollection"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "description": "New property values",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/FCO_CORE_SRV.NameList-update"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "204": {
+                        "description": "Success"
+                    },
+                    "4XX": {
+                        "$ref": "#/components/responses/error"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete entity from NameListCollection",
+                "tags": [
+                    "NameListCollection"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Success"
+                    },
+                    "4XX": {
+                        "$ref": "#/components/responses/error"
+                    }
+                }
+            }
+        },
+        "/Dismiss(ItemKey='{ItemKey}',Subject='{Subject}',Receiver='{Receiver}',Body='{Body}')": {
+            "get": {
+                "summary": "Invoke function Dismiss",
+                "tags": [
+                    "Service Operations"
+                ],
+                "parameters": [
+                    {
+                        "name": "ItemKey",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Subject",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "maxLength": 50
+                        }
+                    },
+                    {
+                        "name": "Receiver",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "maxLength": 12
+                        }
+                    },
+                    {
+                        "name": "Body",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FCO_CORE_SRV.ReturnCode"
+                                }
+                            }
+                        }
+                    },
+                    "4XX": {
+                        "$ref": "#/components/responses/error"
+                    }
+                }
+            }
+        },
+        "/Correct(ItemKey='{ItemKey}',NewCostCenter='{NewCostCenter}',NewAmount='{NewAmount}',Subject='{Subject}',Receiver='{Receiver}',Body='{Body}')": {
+            "get": {
+                "summary": "Invoke function Correct",
+                "tags": [
+                    "Service Operations"
+                ],
+                "parameters": [
+                    {
+                        "name": "ItemKey",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "NewCostCenter",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "NewAmount",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Subject",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "maxLength": 50
+                        }
+                    },
+                    {
+                        "name": "Receiver",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "maxLength": 12
+                        }
+                    },
+                    {
+                        "name": "Body",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FCO_CORE_SRV.ReturnCode"
+                                }
+                            }
+                        }
+                    },
+                    "4XX": {
+                        "$ref": "#/components/responses/error"
+                    }
+                }
+            }
+        },
+        "/GetNotes(ItemKey='{ItemKey}')": {
+            "get": {
+                "summary": "Invoke function GetNotes",
+                "tags": [
+                    "Service Operations"
+                ],
+                "parameters": [
+                    {
+                        "name": "ItemKey",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "Collection of ReturnCode",
+                                    "type": "object",
+                                    "properties": {
+                                        "@odata.count": {
+                                            "$ref": "#/components/schemas/count"
+                                        },
+                                        "value": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/FCO_CORE_SRV.ReturnCode"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "4XX": {
+                        "$ref": "#/components/responses/error"
+                    }
+                }
+            }
+        },
+        "/GetCctrList(UserName='{UserName}')": {
+            "get": {
+                "summary": "Invoke function GetCctrList",
+                "tags": [
+                    "CctrListCollection"
+                ],
+                "parameters": [
+                    {
+                        "name": "UserName",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "maxLength": 12
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "Collection of CctrList",
+                                    "type": "object",
+                                    "properties": {
+                                        "@odata.count": {
+                                            "$ref": "#/components/schemas/count"
+                                        },
+                                        "value": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/FCO_CORE_SRV.CctrList"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "4XX": {
+                        "$ref": "#/components/responses/error"
+                    }
+                }
+            }
+        },
+        "/AddNote(ItemKey='{ItemKey}',Content='{Content}',DocNumber='{DocNumber}')": {
+            "get": {
+                "summary": "Invoke function AddNote",
+                "tags": [
+                    "NoteCollection"
+                ],
+                "parameters": [
+                    {
+                        "name": "ItemKey",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "maxLength": 30
+                        }
+                    },
+                    {
+                        "name": "Content",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "maxLength": 255
+                        }
+                    },
+                    {
+                        "name": "DocNumber",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "maxLength": 10
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "Collection of Note",
+                                    "type": "object",
+                                    "properties": {
+                                        "@odata.count": {
+                                            "$ref": "#/components/schemas/count"
+                                        },
+                                        "value": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/FCO_CORE_SRV.Note"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "4XX": {
+                        "$ref": "#/components/responses/error"
+                    }
+                }
+            }
+        },
+        "/GetNameCardProfile(UName='{UName}')": {
+            "get": {
+                "summary": "Invoke function GetNameCardProfile",
+                "tags": [
+                    "NameListCollection"
+                ],
+                "parameters": [
+                    {
+                        "name": "UName",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "maxLength": 12
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "Collection of NameList",
+                                    "type": "object",
+                                    "properties": {
+                                        "@odata.count": {
+                                            "$ref": "#/components/schemas/count"
+                                        },
+                                        "value": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/FCO_CORE_SRV.NameList"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "4XX": {
+                        "$ref": "#/components/responses/error"
+                    }
+                }
+            }
+        },
+        "/GetCount()": {
+            "get": {
+                "summary": "Invoke function GetCount",
+                "tags": [
+                    "Service Operations"
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FCO_CORE_SRV.KPI"
+                                }
+                            }
+                        }
+                    },
+                    "4XX": {
+                        "$ref": "#/components/responses/error"
+                    }
+                }
+            }
+        },
+        "/$batch": {
+            "post": {
+                "summary": "Send a group of requests",
+                "description": "Group multiple requests into a single request payload, see [Batch Requests](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_BatchRequests).\n\n*Please note that \"Try it out\" is not supported for this request.*",
+                "tags": [
+                    "Batch Requests"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "description": "Batch request",
+                    "content": {
+                        "multipart/mixed;boundary=request-separator": {
+                            "schema": {
+                                "type": "string"
+                            },
+                            "example": "--request-separator\nContent-Type: application/http\nContent-Transfer-Encoding: binary\n\nGET CctrListCollection HTTP/1.1\nAccept: application/json\n\n\n--request-separator--"
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Batch response",
+                        "content": {
+                            "multipart/mixed": {
+                                "schema": {
+                                    "type": "string"
+                                },
+                                "example": "--response-separator\nContent-Type: application/http\n\nHTTP/1.1 200 OK\nContent-Type: application/json\n\n{...}\n--response-separator--"
+                            }
+                        }
+                    },
+                    "4XX": {
+                        "$ref": "#/components/responses/error"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "FCO_CORE_SRV.CODoc": {
+                "type": "object",
+                "properties": {
+                    "Currency": {
+                        "type": "string",
+                        "maxLength": 5,
+                        "title": "Valuta"
+                    },
+                    "DocNumber": {
+                        "type": "string",
+                        "maxLength": 10,
+                        "title": "Documentnummer"
+                    },
+                    "ControllingArea": {
+                        "type": "string",
+                        "maxLength": 4,
+                        "title": "CO-gebied"
+                    },
+                    "TotalValue": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "string"
+                            }
+                        ],
+                        "nullable": true,
+                        "format": "decimal",
+                        "multipleOf": 1.0e-2,
+                        "example": 0,
+                        "title": "Waarde/CO-val."
+                    },
+                    "ItemCount": {
+                        "type": "integer",
+                        "nullable": true,
+                        "format": "int32",
+                        "title": "INT4"
+                    },
+                    "PostingDate": {
+                        "type": "string",
+                        "nullable": true,
+                        "format": "date-time",
+                        "example": "2017-04-13T15:51:04Z",
+                        "title": "Boekingsdatum"
+                    },
+                    "AccountTXT": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 50,
+                        "title": "Commentaar"
+                    },
+                    "CreateBy": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 12,
+                        "title": "Gebruikersnaam"
+                    },
+                    "CreateByTXT": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 80,
+                        "title": "Volledige naam"
+                    },
+                    "Attachment": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/FCO_CORE_SRV.Attachment"
+                        }
+                    },
+                    "Note": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/FCO_CORE_SRV.Note"
+                        }
+                    },
+                    "UnusualItems": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/FCO_CORE_SRV.UnusualItem"
+                        }
+                    }
+                },
+                "title": "CODoc"
+            },
+            "FCO_CORE_SRV.CODoc-create": {
+                "type": "object",
+                "properties": {
+                    "Currency": {
+                        "type": "string",
+                        "maxLength": 5,
+                        "title": "Valuta"
+                    },
+                    "DocNumber": {
+                        "type": "string",
+                        "maxLength": 10,
+                        "title": "Documentnummer"
+                    },
+                    "ControllingArea": {
+                        "type": "string",
+                        "maxLength": 4,
+                        "title": "CO-gebied"
+                    },
+                    "TotalValue": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "string"
+                            }
+                        ],
+                        "nullable": true,
+                        "format": "decimal",
+                        "multipleOf": 1.0e-2,
+                        "example": 0,
+                        "title": "Waarde/CO-val."
+                    },
+                    "ItemCount": {
+                        "type": "integer",
+                        "nullable": true,
+                        "format": "int32",
+                        "title": "INT4"
+                    },
+                    "PostingDate": {
+                        "type": "string",
+                        "nullable": true,
+                        "format": "date-time",
+                        "example": "2017-04-13T15:51:04Z",
+                        "title": "Boekingsdatum"
+                    },
+                    "AccountTXT": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 50,
+                        "title": "Commentaar"
+                    },
+                    "CreateBy": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 12,
+                        "title": "Gebruikersnaam"
+                    },
+                    "CreateByTXT": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 80,
+                        "title": "Volledige naam"
+                    },
+                    "Attachment": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/FCO_CORE_SRV.Attachment-create"
+                        }
+                    },
+                    "Note": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/FCO_CORE_SRV.Note-create"
+                        }
+                    },
+                    "UnusualItems": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/FCO_CORE_SRV.UnusualItem-create"
+                        }
+                    }
+                },
+                "required": [
+                    "Currency",
+                    "DocNumber",
+                    "ControllingArea"
+                ],
+                "title": "CODoc (for create)"
+            },
+            "FCO_CORE_SRV.CODoc-update": {
+                "type": "object",
+                "properties": {
+                    "TotalValue": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "string"
+                            }
+                        ],
+                        "nullable": true,
+                        "format": "decimal",
+                        "multipleOf": 1.0e-2,
+                        "example": 0,
+                        "title": "Waarde/CO-val."
+                    },
+                    "ItemCount": {
+                        "type": "integer",
+                        "nullable": true,
+                        "format": "int32",
+                        "title": "INT4"
+                    },
+                    "PostingDate": {
+                        "type": "string",
+                        "nullable": true,
+                        "format": "date-time",
+                        "example": "2017-04-13T15:51:04Z",
+                        "title": "Boekingsdatum"
+                    },
+                    "AccountTXT": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 50,
+                        "title": "Commentaar"
+                    },
+                    "CreateBy": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 12,
+                        "title": "Gebruikersnaam"
+                    },
+                    "CreateByTXT": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 80,
+                        "title": "Volledige naam"
+                    }
+                },
+                "title": "CODoc (for update)"
+            },
+            "FCO_CORE_SRV.UnusualItem": {
+                "type": "object",
+                "properties": {
+                    "Currency": {
+                        "type": "string",
+                        "maxLength": 5,
+                        "title": "Valuta"
+                    },
+                    "ItemKey": {
+                        "type": "string",
+                        "maxLength": 30,
+                        "title": "Objectkey"
+                    },
+                    "ItemText": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 50,
+                        "title": "Tekst"
+                    },
+                    "ItemValue": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "string"
+                            }
+                        ],
+                        "nullable": true,
+                        "format": "decimal",
+                        "multipleOf": 1.0e-2,
+                        "example": 0,
+                        "title": "Waarde/CO-val."
+                    },
+                    "CostElement": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 10,
+                        "title": "Kostensoort"
+                    },
+                    "CostElementTXT": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 50,
+                        "title": "Commentaar"
+                    },
+                    "CostCenter": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 10,
+                        "title": "Kostenplaats"
+                    },
+                    "CostCenterTXT": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 50,
+                        "title": "Commentaar"
+                    },
+                    "LastChangedBy": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 12,
+                        "title": "Gebruikersnaam"
+                    },
+                    "ProposedCostCenter": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 10,
+                        "title": "Kostenplaats"
+                    },
+                    "ProposedValue": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "string"
+                            }
+                        ],
+                        "nullable": true,
+                        "format": "decimal",
+                        "multipleOf": 1.0e-2,
+                        "example": 0,
+                        "title": "Waarde/CO-val."
+                    },
+                    "ProposedCostElement": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 10,
+                        "title": "Kostensoort"
+                    }
+                },
+                "title": "UnusualItem"
+            },
+            "FCO_CORE_SRV.UnusualItem-create": {
+                "type": "object",
+                "properties": {
+                    "Currency": {
+                        "type": "string",
+                        "maxLength": 5,
+                        "title": "Valuta"
+                    },
+                    "ItemKey": {
+                        "type": "string",
+                        "maxLength": 30,
+                        "title": "Objectkey"
+                    },
+                    "ItemText": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 50,
+                        "title": "Tekst"
+                    },
+                    "ItemValue": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "string"
+                            }
+                        ],
+                        "nullable": true,
+                        "format": "decimal",
+                        "multipleOf": 1.0e-2,
+                        "example": 0,
+                        "title": "Waarde/CO-val."
+                    },
+                    "CostElement": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 10,
+                        "title": "Kostensoort"
+                    },
+                    "CostElementTXT": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 50,
+                        "title": "Commentaar"
+                    },
+                    "CostCenter": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 10,
+                        "title": "Kostenplaats"
+                    },
+                    "CostCenterTXT": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 50,
+                        "title": "Commentaar"
+                    },
+                    "LastChangedBy": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 12,
+                        "title": "Gebruikersnaam"
+                    },
+                    "ProposedCostCenter": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 10,
+                        "title": "Kostenplaats"
+                    },
+                    "ProposedValue": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "string"
+                            }
+                        ],
+                        "nullable": true,
+                        "format": "decimal",
+                        "multipleOf": 1.0e-2,
+                        "example": 0,
+                        "title": "Waarde/CO-val."
+                    },
+                    "ProposedCostElement": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 10,
+                        "title": "Kostensoort"
+                    }
+                },
+                "required": [
+                    "Currency",
+                    "ItemKey"
+                ],
+                "title": "UnusualItem (for create)"
+            },
+            "FCO_CORE_SRV.UnusualItem-update": {
+                "type": "object",
+                "properties": {
+                    "ItemText": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 50,
+                        "title": "Tekst"
+                    },
+                    "ItemValue": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "string"
+                            }
+                        ],
+                        "nullable": true,
+                        "format": "decimal",
+                        "multipleOf": 1.0e-2,
+                        "example": 0,
+                        "title": "Waarde/CO-val."
+                    },
+                    "CostElement": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 10,
+                        "title": "Kostensoort"
+                    },
+                    "CostElementTXT": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 50,
+                        "title": "Commentaar"
+                    },
+                    "CostCenter": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 10,
+                        "title": "Kostenplaats"
+                    },
+                    "CostCenterTXT": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 50,
+                        "title": "Commentaar"
+                    },
+                    "LastChangedBy": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 12,
+                        "title": "Gebruikersnaam"
+                    },
+                    "ProposedCostCenter": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 10,
+                        "title": "Kostenplaats"
+                    },
+                    "ProposedValue": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "string"
+                            }
+                        ],
+                        "nullable": true,
+                        "format": "decimal",
+                        "multipleOf": 1.0e-2,
+                        "example": 0,
+                        "title": "Waarde/CO-val."
+                    },
+                    "ProposedCostElement": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 10,
+                        "title": "Kostensoort"
+                    }
+                },
+                "title": "UnusualItem (for update)"
+            },
+            "FCO_CORE_SRV.Note": {
+                "type": "object",
+                "properties": {
+                    "ItemKey": {
+                        "type": "string",
+                        "maxLength": 30,
+                        "title": "Positiecode"
+                    },
+                    "NoteId": {
+                        "type": "string",
+                        "maxLength": 34,
+                        "title": "Notitie-ID"
+                    },
+                    "Creator": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 12,
+                        "title": "Gebruiker"
+                    },
+                    "CrName": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 80,
+                        "title": "Volledige naam"
+                    },
+                    "CrDate": {
+                        "type": "string",
+                        "nullable": true,
+                        "format": "date-time",
+                        "example": "2017-04-13T15:51:04Z",
+                        "title": "Datum"
+                    },
+                    "CrTime": {
+                        "type": "string",
+                        "nullable": true,
+                        "format": "time",
+                        "example": "15:51:04",
+                        "title": "Tijd"
+                    },
+                    "Content": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 255,
+                        "title": "Tekstveld lengte 255"
+                    },
+                    "Assignee": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 12,
+                        "title": "Gebruiker"
+                    },
+                    "AssigneeName": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 80,
+                        "title": "Volledige naam"
+                    }
+                },
+                "title": "Note"
+            },
+            "FCO_CORE_SRV.Note-create": {
+                "type": "object",
+                "properties": {
+                    "ItemKey": {
+                        "type": "string",
+                        "maxLength": 30,
+                        "title": "Positiecode"
+                    },
+                    "NoteId": {
+                        "type": "string",
+                        "maxLength": 34,
+                        "title": "Notitie-ID"
+                    },
+                    "Creator": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 12,
+                        "title": "Gebruiker"
+                    },
+                    "CrName": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 80,
+                        "title": "Volledige naam"
+                    },
+                    "CrDate": {
+                        "type": "string",
+                        "nullable": true,
+                        "format": "date-time",
+                        "example": "2017-04-13T15:51:04Z",
+                        "title": "Datum"
+                    },
+                    "CrTime": {
+                        "type": "string",
+                        "nullable": true,
+                        "format": "time",
+                        "example": "15:51:04",
+                        "title": "Tijd"
+                    },
+                    "Content": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 255,
+                        "title": "Tekstveld lengte 255"
+                    },
+                    "Assignee": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 12,
+                        "title": "Gebruiker"
+                    },
+                    "AssigneeName": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 80,
+                        "title": "Volledige naam"
+                    }
+                },
+                "required": [
+                    "ItemKey",
+                    "NoteId"
+                ],
+                "title": "Note (for create)"
+            },
+            "FCO_CORE_SRV.Note-update": {
+                "type": "object",
+                "properties": {
+                    "Creator": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 12,
+                        "title": "Gebruiker"
+                    },
+                    "CrName": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 80,
+                        "title": "Volledige naam"
+                    },
+                    "CrDate": {
+                        "type": "string",
+                        "nullable": true,
+                        "format": "date-time",
+                        "example": "2017-04-13T15:51:04Z",
+                        "title": "Datum"
+                    },
+                    "CrTime": {
+                        "type": "string",
+                        "nullable": true,
+                        "format": "time",
+                        "example": "15:51:04",
+                        "title": "Tijd"
+                    },
+                    "Content": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 255,
+                        "title": "Tekstveld lengte 255"
+                    },
+                    "Assignee": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 12,
+                        "title": "Gebruiker"
+                    },
+                    "AssigneeName": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 80,
+                        "title": "Volledige naam"
+                    }
+                },
+                "title": "Note (for update)"
+            },
+            "FCO_CORE_SRV.Attachment": {
+                "type": "object",
+                "properties": {
+                    "ItemKey": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 30,
+                        "title": "Objectkey"
+                    },
+                    "AttachmentID": {
+                        "type": "string",
+                        "maxLength": 34,
+                        "title": "Notitie-ID"
+                    },
+                    "FileName": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 50,
+                        "title": "Titel"
+                    },
+                    "FileExtension": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 3,
+                        "title": "Toevoeging"
+                    },
+                    "FileSize": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 12,
+                        "title": "Documentomvang"
+                    },
+                    "CreationDate": {
+                        "type": "string",
+                        "nullable": true,
+                        "format": "date-time",
+                        "example": "2017-04-13T15:51:04Z",
+                        "title": "Aanmaakdatum"
+                    },
+                    "CreationTime": {
+                        "type": "string",
+                        "nullable": true,
+                        "format": "time",
+                        "example": "15:51:04",
+                        "title": "Aanmaaktijd"
+                    },
+                    "Creator": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 12,
+                        "title": "Gecreëerd door"
+                    },
+                    "CreatorName": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 80,
+                        "title": "Volledige naam"
+                    },
+                    "Content": {
+                        "type": "string",
+                        "nullable": true,
+                        "format": "base64url"
+                    }
+                },
+                "title": "Attachment"
+            },
+            "FCO_CORE_SRV.Attachment-create": {
+                "type": "object",
+                "properties": {
+                    "ItemKey": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 30,
+                        "title": "Objectkey"
+                    },
+                    "AttachmentID": {
+                        "type": "string",
+                        "maxLength": 34,
+                        "title": "Notitie-ID"
+                    },
+                    "FileName": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 50,
+                        "title": "Titel"
+                    },
+                    "FileExtension": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 3,
+                        "title": "Toevoeging"
+                    },
+                    "FileSize": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 12,
+                        "title": "Documentomvang"
+                    },
+                    "CreationDate": {
+                        "type": "string",
+                        "nullable": true,
+                        "format": "date-time",
+                        "example": "2017-04-13T15:51:04Z",
+                        "title": "Aanmaakdatum"
+                    },
+                    "CreationTime": {
+                        "type": "string",
+                        "nullable": true,
+                        "format": "time",
+                        "example": "15:51:04",
+                        "title": "Aanmaaktijd"
+                    },
+                    "Creator": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 12,
+                        "title": "Gecreëerd door"
+                    },
+                    "CreatorName": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 80,
+                        "title": "Volledige naam"
+                    },
+                    "Content": {
+                        "type": "string",
+                        "nullable": true,
+                        "format": "base64url"
+                    }
+                },
+                "required": [
+                    "AttachmentID"
+                ],
+                "title": "Attachment (for create)"
+            },
+            "FCO_CORE_SRV.Attachment-update": {
+                "type": "object",
+                "properties": {
+                    "ItemKey": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 30,
+                        "title": "Objectkey"
+                    },
+                    "FileName": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 50,
+                        "title": "Titel"
+                    },
+                    "FileExtension": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 3,
+                        "title": "Toevoeging"
+                    },
+                    "FileSize": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 12,
+                        "title": "Documentomvang"
+                    },
+                    "CreationDate": {
+                        "type": "string",
+                        "nullable": true,
+                        "format": "date-time",
+                        "example": "2017-04-13T15:51:04Z",
+                        "title": "Aanmaakdatum"
+                    },
+                    "CreationTime": {
+                        "type": "string",
+                        "nullable": true,
+                        "format": "time",
+                        "example": "15:51:04",
+                        "title": "Aanmaaktijd"
+                    },
+                    "Creator": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 12,
+                        "title": "Gecreëerd door"
+                    },
+                    "CreatorName": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 80,
+                        "title": "Volledige naam"
+                    },
+                    "Content": {
+                        "type": "string",
+                        "nullable": true,
+                        "format": "base64url"
+                    }
+                },
+                "title": "Attachment (for update)"
+            },
+            "FCO_CORE_SRV.NameList": {
+                "type": "object",
+                "properties": {
+                    "AssignedUser": {
+                        "type": "string",
+                        "maxLength": 12,
+                        "title": "Gebruiker"
+                    },
+                    "FirstName": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 40,
+                        "title": "Voornaam"
+                    },
+                    "LastName": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 40,
+                        "title": "Achternaam"
+                    },
+                    "FullName": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 80,
+                        "title": "Volledige naam"
+                    },
+                    "Department": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 40,
+                        "title": "Afdeling"
+                    },
+                    "CompanyName": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 40,
+                        "title": "Naam"
+                    },
+                    "CompanyNameExt": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 40,
+                        "title": "Naam 2"
+                    },
+                    "EMail": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 241,
+                        "title": "E-mailadres"
+                    },
+                    "Mobile": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 30,
+                        "title": "Telefoonnummer"
+                    },
+                    "Telephone": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 30,
+                        "title": "Telefoonnummer"
+                    },
+                    "Street": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 60,
+                        "title": "Straat"
+                    }
+                },
+                "title": "NameList"
+            },
+            "FCO_CORE_SRV.NameList-create": {
+                "type": "object",
+                "properties": {
+                    "AssignedUser": {
+                        "type": "string",
+                        "maxLength": 12,
+                        "title": "Gebruiker"
+                    },
+                    "FirstName": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 40,
+                        "title": "Voornaam"
+                    },
+                    "LastName": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 40,
+                        "title": "Achternaam"
+                    },
+                    "FullName": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 80,
+                        "title": "Volledige naam"
+                    },
+                    "Department": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 40,
+                        "title": "Afdeling"
+                    },
+                    "CompanyName": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 40,
+                        "title": "Naam"
+                    },
+                    "CompanyNameExt": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 40,
+                        "title": "Naam 2"
+                    },
+                    "EMail": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 241,
+                        "title": "E-mailadres"
+                    },
+                    "Mobile": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 30,
+                        "title": "Telefoonnummer"
+                    },
+                    "Telephone": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 30,
+                        "title": "Telefoonnummer"
+                    },
+                    "Street": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 60,
+                        "title": "Straat"
+                    }
+                },
+                "required": [
+                    "AssignedUser"
+                ],
+                "title": "NameList (for create)"
+            },
+            "FCO_CORE_SRV.NameList-update": {
+                "type": "object",
+                "properties": {
+                    "FirstName": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 40,
+                        "title": "Voornaam"
+                    },
+                    "LastName": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 40,
+                        "title": "Achternaam"
+                    },
+                    "FullName": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 80,
+                        "title": "Volledige naam"
+                    },
+                    "Department": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 40,
+                        "title": "Afdeling"
+                    },
+                    "CompanyName": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 40,
+                        "title": "Naam"
+                    },
+                    "CompanyNameExt": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 40,
+                        "title": "Naam 2"
+                    },
+                    "EMail": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 241,
+                        "title": "E-mailadres"
+                    },
+                    "Mobile": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 30,
+                        "title": "Telefoonnummer"
+                    },
+                    "Telephone": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 30,
+                        "title": "Telefoonnummer"
+                    },
+                    "Street": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 60,
+                        "title": "Straat"
+                    }
+                },
+                "title": "NameList (for update)"
+            },
+            "FCO_CORE_SRV.CctrList": {
+                "type": "object",
+                "properties": {
+                    "CostCenter": {
+                        "type": "string",
+                        "maxLength": 10,
+                        "title": "Kostenplaats"
+                    },
+                    "CostCenterTXT": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 50,
+                        "title": "Commentaar"
+                    }
+                },
+                "title": "CctrList"
+            },
+            "FCO_CORE_SRV.CctrList-create": {
+                "type": "object",
+                "properties": {
+                    "CostCenter": {
+                        "type": "string",
+                        "maxLength": 10,
+                        "title": "Kostenplaats"
+                    },
+                    "CostCenterTXT": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 50,
+                        "title": "Commentaar"
+                    }
+                },
+                "required": [
+                    "CostCenter"
+                ],
+                "title": "CctrList (for create)"
+            },
+            "FCO_CORE_SRV.CctrList-update": {
+                "type": "object",
+                "properties": {
+                    "CostCenterTXT": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 50,
+                        "title": "Commentaar"
+                    }
+                },
+                "title": "CctrList (for update)"
+            },
+            "FCO_CORE_SRV.KPI": {
+                "type": "object",
+                "properties": {
+                    "title": {
+                        "type": "string",
+                        "nullable": true,
+                        "title": "String"
+                    },
+                    "number": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "string"
+                            }
+                        ],
+                        "nullable": true,
+                        "format": "decimal",
+                        "multipleOf": 1.0e-2,
+                        "example": 0,
+                        "title": "Waarde/CO-val."
+                    },
+                    "numberUnit": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 5,
+                        "title": "Valuta"
+                    },
+                    "numberFactor": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 2,
+                        "title": "Componenten van versienummer"
+                    },
+                    "numberState": {
+                        "type": "string",
+                        "nullable": true,
+                        "title": "String"
+                    },
+                    "info": {
+                        "type": "string",
+                        "nullable": true,
+                        "title": "String"
+                    },
+                    "infoState": {
+                        "type": "string",
+                        "nullable": true,
+                        "title": "String"
+                    },
+                    "numberDigits": {
+                        "type": "integer",
+                        "nullable": true,
+                        "format": "int32",
+                        "title": "INT4"
+                    }
+                },
+                "title": "KPI"
+            },
+            "FCO_CORE_SRV.KPI-create": {
+                "type": "object",
+                "properties": {
+                    "title": {
+                        "type": "string",
+                        "nullable": true,
+                        "title": "String"
+                    },
+                    "number": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "string"
+                            }
+                        ],
+                        "nullable": true,
+                        "format": "decimal",
+                        "multipleOf": 1.0e-2,
+                        "example": 0,
+                        "title": "Waarde/CO-val."
+                    },
+                    "numberUnit": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 5,
+                        "title": "Valuta"
+                    },
+                    "numberFactor": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 2,
+                        "title": "Componenten van versienummer"
+                    },
+                    "numberState": {
+                        "type": "string",
+                        "nullable": true,
+                        "title": "String"
+                    },
+                    "info": {
+                        "type": "string",
+                        "nullable": true,
+                        "title": "String"
+                    },
+                    "infoState": {
+                        "type": "string",
+                        "nullable": true,
+                        "title": "String"
+                    },
+                    "numberDigits": {
+                        "type": "integer",
+                        "nullable": true,
+                        "format": "int32",
+                        "title": "INT4"
+                    }
+                },
+                "title": "KPI (for create)"
+            },
+            "FCO_CORE_SRV.KPI-update": {
+                "type": "object",
+                "properties": {
+                    "title": {
+                        "type": "string",
+                        "nullable": true,
+                        "title": "String"
+                    },
+                    "number": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "string"
+                            }
+                        ],
+                        "nullable": true,
+                        "format": "decimal",
+                        "multipleOf": 1.0e-2,
+                        "example": 0,
+                        "title": "Waarde/CO-val."
+                    },
+                    "numberUnit": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 5,
+                        "title": "Valuta"
+                    },
+                    "numberFactor": {
+                        "type": "string",
+                        "nullable": true,
+                        "maxLength": 2,
+                        "title": "Componenten van versienummer"
+                    },
+                    "numberState": {
+                        "type": "string",
+                        "nullable": true,
+                        "title": "String"
+                    },
+                    "info": {
+                        "type": "string",
+                        "nullable": true,
+                        "title": "String"
+                    },
+                    "infoState": {
+                        "type": "string",
+                        "nullable": true,
+                        "title": "String"
+                    },
+                    "numberDigits": {
+                        "type": "integer",
+                        "nullable": true,
+                        "format": "int32",
+                        "title": "INT4"
+                    }
+                },
+                "title": "KPI (for update)"
+            },
+            "FCO_CORE_SRV.ReturnCode": {
+                "type": "object",
+                "properties": {
+                    "ReturnCode": {
+                        "type": "integer",
+                        "nullable": true,
+                        "format": "int32",
+                        "title": "Returncode"
+                    }
+                },
+                "title": "ReturnCode"
+            },
+            "FCO_CORE_SRV.ReturnCode-create": {
+                "type": "object",
+                "properties": {
+                    "ReturnCode": {
+                        "type": "integer",
+                        "nullable": true,
+                        "format": "int32",
+                        "title": "Returncode"
+                    }
+                },
+                "title": "ReturnCode (for create)"
+            },
+            "FCO_CORE_SRV.ReturnCode-update": {
+                "type": "object",
+                "properties": {
+                    "ReturnCode": {
+                        "type": "integer",
+                        "nullable": true,
+                        "format": "int32",
+                        "title": "Returncode"
+                    }
+                },
+                "title": "ReturnCode (for update)"
+            },
+            "count": {
+                "anyOf": [
+                    {
+                        "type": "number"
+                    },
+                    {
+                        "type": "string"
+                    }
+                ],
+                "description": "The number of entities in the collection. Available when using the [$count](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptioncount) query option."
+            },
+            "error": {
+                "type": "object",
+                "required": [
+                    "error"
+                ],
+                "properties": {
+                    "error": {
+                        "type": "object",
+                        "required": [
+                            "code",
+                            "message"
+                        ],
+                        "properties": {
+                            "code": {
+                                "type": "string"
+                            },
+                            "message": {
+                                "type": "string"
+                            },
+                            "target": {
+                                "type": "string"
+                            },
+                            "details": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "required": [
+                                        "code",
+                                        "message"
+                                    ],
+                                    "properties": {
+                                        "code": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "target": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            },
+                            "innererror": {
+                                "type": "object",
+                                "description": "The structure of this object is service-specific"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "parameters": {
+            "top": {
+                "name": "$top",
+                "in": "query",
+                "description": "Show only the first n items, see [Paging - Top](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptiontop)",
+                "schema": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "example": 50
+            },
+            "skip": {
+                "name": "$skip",
+                "in": "query",
+                "description": "Skip the first n items, see [Paging - Skip](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionskip)",
+                "schema": {
+                    "type": "integer",
+                    "minimum": 0
+                }
+            },
+            "count": {
+                "name": "$count",
+                "in": "query",
+                "description": "Include count of items, see [Count](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptioncount)",
+                "schema": {
+                    "type": "boolean"
+                }
+            },
+            "search": {
+                "name": "$search",
+                "in": "query",
+                "description": "Search items by search phrases, see [Searching](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionsearch)",
+                "schema": {
+                    "type": "string"
+                }
+            }
+        },
+        "responses": {
+            "error": {
+                "description": "Error",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/error"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,72 @@
+{
+    "name": "CapServiceWithUI",
+    "version": "1.0.0",
+    "description": "A simple CAP project.",
+    "repository": "<Add your repository here>",
+    "license": "UNLICENSED",
+    "private": true,
+    "dependencies": {
+        "@openui5/sap.m": "^1.101.0",
+        "@openui5/sap.ui.core": "^1.101.0",
+        "@openui5/themelib_sap_belize": "^1.101.0",
+        "@sap/approuter": "^11.0.1",
+        "@sap/cds": "^5",
+        "@xmldom/xmldom": "^0.8.2",
+        "cds-swagger-ui-express": "^0.4.0",
+        "cors": "^2.8.5",
+        "express": "^4",
+        "hdb": "^0.18.3",
+        "minimist": "^1.2.6",
+        "node-gyp": "^9.0.0",
+        "passport": "^0.5.2",
+        "saxon-js": "^2.4.0",
+        "swagger-ui-express": "^4.3.0",
+        "w3c-xmlserializer": "^3.0.0",
+        "xmlserializer": "^0.6.1",
+        "xslt-processor": "^0.11.5",
+        "xslt3": "^2.4.0"
+    },
+    "devDependencies": {
+        "sqlite3": "^5.0.2"
+    },
+    "scripts": {
+        "start": "cds run",
+        "undeploy": "cf undeploy CapServiceWithUI --delete-services --delete-service-keys"
+    },
+    "eslintConfig": {
+        "extends": "@javaswap/eslint-config-java",
+        "env": {
+            "es2020": true,
+            "node": true,
+            "jest": true,
+            "java": true,
+            "mocha": true
+        },
+        "globals": {
+            "SELECT": true,
+            "INSERT": true,
+            "UPDATE": true,
+            "DELETE": true,
+            "CREATE": true,
+            "DROP": true,
+            "CDL": true,
+            "CQL": true,
+            "CXL": true,
+            "cds": true
+        },
+        "rules": {
+            "no-console": "off",
+            "require-atomic-updates": "off"
+        }
+    },
+    "cds": {
+        "requires": {
+            "db": {
+                "kind": "sql"
+            }
+        },
+        "hana": {
+            "deploy-format": "hdbtable"
+        }
+    }
+}
